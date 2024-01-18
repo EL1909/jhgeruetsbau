@@ -1,0 +1,126 @@
+/* CSS Rules for JH Geruestbau */
+
+/* General*/
+
+body    {
+    min-height: 100%;
+    background: linear-gradient(to right, 
+    #183ac3fc 25%, /* Deep blue */
+    #e09202 25%, /* Orange */
+    #e09202 26%, /* Orange continues for the 5% segment */
+    #f8f9fa 26% /* Rest of the background color */);
+}
+
+
+/* Top Banner*/
+
+.logo   {
+    height: 100px;
+    text-align: right;
+    align-items: center;
+    padding: 15px;
+}
+
+.logo a    {
+    font-size: 30px;
+}
+
+.navbar  {
+    align-items: center;
+    text-align: center;
+    border-bottom: solid 2px #e09202;
+    height: 30px;
+}
+
+.navbar-nav { 
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+
+.navbar-nav li{
+    padding: 25px;
+    margin-left: solid 2px #e09202;
+}
+
+/* Register */
+/* Profile */
+/* Footer   */
+
+.footer {
+    background-color: #f8f9fa;
+    width: 100%;
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+}
+
+.tabs-footer {
+    display: flex;
+    justify-content: space-between; /* Align tabs and logo horizontally */
+    align-items: center;
+    max-height: 25px;
+    padding: 0;
+    /* Create a linear gradient with lines */
+    background-image: linear-gradient(to bottom, 
+        transparent 0%, 
+        transparent 0%, #000 0%, #000 6%, 
+        transparent 6%, 
+        transparent 48%,#000 48%,#000 54%, 
+        transparent 54%,
+        transparent 94%,#000 94%, #000 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: #f2f1f1;
+    width: 100%;
+}
+
+.tabs-footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Make the list items inline */
+}
+
+.tabs-footer li {
+    border: 1.5px solid #000;
+    border-radius: 0 15px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    background-color: #f2f1f1;
+    margin: 0; /* Adjust spacing between tabs */
+}
+
+.tabs-footer li a {
+    display: block;
+    color: #333;
+    text-align: justify;
+    text-decoration: none;
+}
+
+.tabs-footer li:hover {
+    background-color: #1111114c;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #f2f1f1;
+    height: 20px;
+    padding: 0 5px;
+    margin: 10px 0;
+}
+
+.footer-logo a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    padding: 0;
+}
+
+/* Media Queries---------------------------------- */

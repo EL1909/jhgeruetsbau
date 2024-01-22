@@ -5,9 +5,9 @@
 body    {
     min-height: 100%;
     background: linear-gradient(to right, 
-    #183ac3fc 25%, /* Deep blue */
-    #e09202 25%, /* Orange */
-    #e09202 26%, /* Orange continues for the 5% segment */
+    #064bb1fc 25%, /* Deep blue */
+    #ce8703 25%, /* Orange */
+    #ce8703 26%, /* Orange continues for the 5% segment */
     #f8f9fa 26% /* Rest of the background color */);
 }
 
@@ -26,25 +26,44 @@ body    {
 }
 
 .navbar  {
-    align-items: center;
-    text-align: center;
-    border-bottom: solid 2px #e09202;
+    align-items: right;
+    text-align: right;
     height: 30px;
+    background: linear-gradient(to right, 
+    #064bb1fc 25%, /* Deep blue */
+    #ce8703 25%, /* Orange */
+    #ce8703 26%, /* Orange continues for the 5% segment */
+    #f8f9fa 26% /* Rest of the background color */);
 }
 
 .navbar-nav { 
     margin: 0 auto;
     display: flex;
     align-items: center;
+    border-bottom: solid 2px #ce8703;
 }
 
 
 .navbar-nav li{
-    padding: 25px;
-    margin-left: solid 2px #e09202;
+    padding: 0 25px;
+    margin-left: solid 2px #ce8703;
 }
 
-/* Register */
+/* Service Form */
+
+.service-form   {
+    text-align: center;
+}
+
+.form-outline {
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
 /* Profile */
 /* Footer   */
 

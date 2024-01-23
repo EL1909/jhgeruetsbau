@@ -1,14 +1,16 @@
 /* CSS Rules for JH Geruestbau */
 
+/* Google Fonts Noto Sans and Raleway*/
+
 /* General*/
 
 body    {
     min-height: 100%;
     background: linear-gradient(to right, 
     #064bb1fc 25%, /* Deep blue */
-    #ce8703 25%, /* Orange */
-    #ce8703 26%, /* Orange continues for the 5% segment */
-    #f8f9fa 26% /* Rest of the background color */);
+    #eb7506 25%, /* Orange */
+    #eb7506 25.5%, /* Orange continues for the 5% segment */
+    #f8f9fa 25.5% /* Rest of the background color */);
 }
 
 
@@ -17,8 +19,8 @@ body    {
 .logo   {
     height: 100px;
     text-align: right;
-    align-items: center;
     padding: 15px;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .logo a    {
@@ -26,42 +28,94 @@ body    {
 }
 
 .navbar  {
-    align-items: right;
-    text-align: right;
-    height: 30px;
+    height: 50px;
     background: linear-gradient(to right, 
     #064bb1fc 25%, /* Deep blue */
-    #ce8703 25%, /* Orange */
-    #ce8703 26%, /* Orange continues for the 5% segment */
-    #f8f9fa 26% /* Rest of the background color */);
+    #eb7506 25%, /* Orange */
+    #eb7506 25.5%, /* Orange continues for the 5% segment */
+    #f8f9fa 25.5% /* Rest of the background color */);
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 }
 
-.navbar-nav { 
-    margin: 0 auto;
+.navbar::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 25%; /* Starting point at 25% */
+    width: 75%; /* Extending to the right (100% - 25%) */
+    height: 4px; /* Adjust the height of the line */
+    background-color: #eb7506; /* Adjust the color of the line */
+}
+
+.navbar-nav {
+    margin: auto;
     display: flex;
     align-items: center;
-    border-bottom: solid 2px #ce8703;
+    margin-right: 0;
 }
 
+.navbar li{
+    list-style: none;
+    margin: 0 10px;
+}
 
-.navbar-nav li{
-    padding: 0 25px;
-    margin-left: solid 2px #ce8703;
+.navbar-nav a:hover    {
+    font-weight: bold;
+    color: #eb7506;
+    background-color: #064bb1fc;
+    border-radius: 25px 25px 0 0;
+    height: 40px;
+    padding: 10px 0;
 }
 
 /* Service Form */
 
-.service-form   {
+.service-request    {
     text-align: center;
 }
 
-.form-outline {
-    margin-bottom: 20px;
+.service-form   {
+    width: 60%;
+    margin-left: auto;
+    margin-right: 5%;
+    border: solid 2px #ce8703;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
 }
 
-form {
-    max-width: 600px; /* Adjust the maximum width as needed */
-    margin: 0 auto; /* Center the form horizontally */
+.form-outline {
+    background-color: none;
+    margin: 10px;
+    text-align: left;
+    max-width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+input   {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ce8703;
+    width: fit-content;
+    padding: 0 40px;
+}
+
+.form-button {
+    background-color: #064bb1fc;
+    font-size: 1.2;
+    font-weight: bolder;
+    color: #ce8703;
+    text-shadow: #f8f9fa;
+    border: solid 2px #ce8703;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    width: 80%;
+    text-align: center;
+    display: inline-block;
 }
 
 /* Profile */

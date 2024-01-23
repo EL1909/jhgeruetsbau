@@ -1,63 +1,54 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="row">
+<div id="ort" class="col-3">
     <h1>
         Direkt Angebot.
     </h1>
     <p>1. Besichen wir das ort.</p>
     <p>2. Montieren wir.</p>
-    <p>3. Abbauen wir.</p3
+    <p>3. Abbauen wir.</p3>
 </div>
-<div class="service-form offset-1">
+<div class="service-request p-4">
     <h2>Visit Request Form</h2>
     <form action="#" method="post">
-        <div class="row mb-4">
-            <div class="col-12 form-outline">
-                <label for="contact_person">Contact Person:</label>
-                <input type="text" id="contact_person" name="contact_person" required>
-            </div>
+    <div class="service-form">
+        <div class="col-12 form-outline">
+            <label for="contact_person">Ansprechpartner:</label>
+            <input type="text" id="contact_person" name="contact_person" required>
         </div>
-        <div class="row mb-4">
-            <div class="col-6 form-outline">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="col-6 form-outline">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+        <div class="col-6 form-outline">
+            <label for="phone">Telefon:</label>
+            <input type="tel" id="phone" name="phone" required>
         </div>
-        <div class="row mb-4">
-            <div class="col-6 form-outline">
-                <label for="visit_date">Preferred Visit Date:</label>
-                <input type="date" id="visit_date" name="visit_date" required>
-            </div>
-            <div class="col-6 form-outline">
-                <label for="duration">Duration of Equipment Needed:</label>
-                <input type="text" id="duration" name="duration" required>
-            </div>
+        <div class="col-6 form-outline">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
         </div>
-        <div class="row mb-4">
-            <div class="col-4 form-outline">
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" required>
-                </div>
-            </div>
-            <div class="col-4 form-outline">
-                <label for="zipcode">Zipcode:</label>
-                <input type="text" id="zipcode" name="zipcode" required>
-            </div>
-            <div class="col-4 form-outline">
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" required>
-            </div>
+        <div class="col-6 form-outline">
+            <label for="visit_date">Termin ab:</label>
+            <input type="date" id="visit_date" name="visit_date" required>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <button type="submit">Submit Request</button>
-            </div>
+        <div class="col-6 form-outline">
+            <label for="duration">Mietdauer:</label>
+            <input type="text" id="duration" name="duration" required>
         </div>
+        <div class="col-12 form-outline">
+            <label for="address">Adresse:</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        <div class="col-6 form-outline">
+            <label for="zipcode">Postleitzahl:</label>
+            <input type="text" id="zipcode" name="zipcode" required>
+        </div>
+        <div class="col-6 form-outline">
+            <label for="city">Ort:</label>
+            <input type="text" id="city" name="city" required>
+        </div>
+        <div class="col-12">
+            <button class="form-button" type="submit">Besuch anfordern</button>
+        </div>
+    </div>
     </form>    
 </div>
 {% endblock %}

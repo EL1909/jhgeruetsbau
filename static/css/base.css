@@ -16,11 +16,37 @@ body    {
 
 /* Top Banner*/
 
+.call {
+    display: inline-block;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 40px 10px;
+    background-color: none; /* Background color */
+}
+
+.call a {
+    text-decoration: none;
+    color: #f2f1f1; /* Text color */
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.call:hover {
+    background-color: #eb7506; /* Background color on hover */
+    padding: 40px 15px;
+}
+
+
 .logo   {
     height: 100px;
-    text-align: right;
+    text-align: center;
     padding: 15px;
     font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
 }
 
 .logo a    {
@@ -61,15 +87,32 @@ body    {
 .navbar li{
     list-style: none;
     margin: 0 10px;
+    padding: none;
+    border-left: 4px solid #ce8703;
 }
 
 .navbar-nav a:hover    {
-    font-weight: bold;
-    color: #eb7506;
-    background-color: #064bb1fc;
-    border-radius: 25px 25px 0 0;
-    height: 40px;
-    padding: 10px 0;
+    font-weight:1.2rem;
+    color: #064bb1fc;
+}
+
+/* Left panel */
+
+#ort    {
+    margin: 20px 0;
+    color: #f2f1f1;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
+}
+
+#ort h4 {
+    text-align: right;
+    margin-right: 15px;
+}
+
+#ortlist    {
+    max-height: 100px;
+    overflow: scroll;
 }
 
 /* Service Form */
@@ -82,34 +125,33 @@ body    {
     width: 60%;
     margin-left: auto;
     margin-right: 5%;
-    border: solid 2px #ce8703;
     font-family: 'Raleway', sans-serif;
     font-size: 1em;
+    border: 1px solid #ce8703;
 }
 
 .form-outline {
     background-color: none;
-    margin: 10px;
+    margin: 20px 15px;
     text-align: left;
-    max-width: 90%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 input   {
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #ce8703;
-    width: fit-content;
-    padding: 0 40px;
+    border-bottom: 2px solid #ce8703;
+    width: 80%;
 }
 
 .form-button {
     background-color: #064bb1fc;
-    font-size: 1.2;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.2em;
     font-weight: bolder;
-    color: #ce8703;
-    text-shadow: #f8f9fa;
+    text-shadow: 2px solid #ce8703;
+    color: #f8f9fa;
     border: solid 2px #ce8703;
     padding: 5px 15px;
     margin-bottom: 10px;
@@ -117,6 +159,14 @@ input   {
     text-align: center;
     display: inline-block;
 }
+
+form hr {
+    width: 25px;
+    border: none; /* Optional: If you want to remove the default border */
+    background-color: #064bb1fc; /* Optional: Set the background color */
+    height: 2px; /* Optional: Set the height of the line */
+}
+
 
 /* Profile */
 /* Footer   */
@@ -195,5 +245,7 @@ input   {
     font-weight: bolder;
     padding: 0;
 }
+
+
 
 /* Media Queries---------------------------------- */

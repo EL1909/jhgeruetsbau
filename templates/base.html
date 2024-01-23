@@ -25,12 +25,18 @@
     <header>
         <div>
             <div class="logo">
-                <a class="navbar-brand" href="#">
+              <div class="call" id="call">
+                <a href="tel:+4901719389960">
+                  <i class="fa-solid fa-phone"></i>
+                  <span id="callnum">0171 9389960</span>
+                </a>
+              </div>
+              <a class="navbar-brand" href="#">
                 <h2>Gerütsbau</h2>
                 <h2>Josef Hundegger</h2> 
-                </a>
+              </a>
             </div>
-                <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -51,7 +57,7 @@
                 </div>
             </nav>
         </div>
-     </header>
+    </header>
     <div class="container-fluid">
     {% block content %}
     {% endblock %}
@@ -70,5 +76,7 @@
         </div>
     </footer> -->
     <script src="{% static 'js/custom.js' %}"></script>
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/5c47144494.js" crossorigin="anonymous"></script>
 </body>
 </html>

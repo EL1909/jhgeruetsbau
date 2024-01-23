@@ -13,6 +13,12 @@ body    {
     #f8f9fa 25.5% /* Rest of the background color */);
 }
 
+span    {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 
 /* Top Banner*/
 
@@ -26,13 +32,15 @@ body    {
     align-items: center;
     padding: 40px 10px;
     background-color: none; /* Background color */
+    width: 25%;
+    margin: 0;
 }
 
 .call a {
     text-decoration: none;
-    color: #f2f1f1; /* Text color */
-    font-size: .8rem;
+    color: #f2f1f1;
     font-weight: bold;
+    width: fit-content;
 }
 
 .call:hover {
@@ -88,7 +96,6 @@ body    {
     list-style: none;
     margin: 0 10px;
     padding: none;
-    border-left: 4px solid #ce8703;
 }
 
 .navbar-nav a:hover    {
@@ -107,32 +114,55 @@ body    {
 
 #ort h4 {
     text-align: right;
-    margin-right: 15px;
+    margin-right: 25px;
 }
 
 #ortlist    {
-    max-height: 100px;
+    max-height: 450px;
     overflow: scroll;
+    padding: 0 5px;
 }
 
 /* Service Form */
 
 .service-request    {
-    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    text-align: right;
+    margin: 25px;
+    padding: 0;
+    background-image: url(/media/site/andamio-2-01.png);
+    background-position: cover;
+
+}
+
+.service-request  h2  {
+    height: 100px;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
+    text-decoration: underline 2px #eb7506;
+    color: #064bb1fc;
+    margin-bottom: 0;
+}
+
+.service-request  p {
+    font-family: 'Raleway', sans-serif;
+    font-style: italic;
+    margin-top: 0;
+    padding: 0;
 }
 
 .service-form   {
-    width: 60%;
-    margin-left: auto;
-    margin-right: 5%;
+    width: 80%;
+    margin: 50px auto;
     font-family: 'Raleway', sans-serif;
-    font-size: 1em;
-    border: 1px solid #ce8703;
+    text-align: center;
+    /* font-size: 1em;
+    border: 1px solid #eb7506; */
 }
 
 .form-outline {
     background-color: none;
-    margin: 20px 15px;
+    margin: 20px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -141,7 +171,7 @@ body    {
 input   {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #ce8703;
+    border-bottom: 2px solid #eb7506;
     width: 80%;
 }
 
@@ -150,13 +180,12 @@ input   {
     font-family: 'Noto Sans', sans-serif;
     font-size: 1.2em;
     font-weight: bolder;
-    text-shadow: 2px solid #ce8703;
+    text-shadow: 2px solid #eb7506;
     color: #f8f9fa;
-    border: solid 2px #ce8703;
+    border: solid 2px #eb7506;
     padding: 5px 15px;
     margin-bottom: 10px;
     width: 80%;
-    text-align: center;
     display: inline-block;
 }
 

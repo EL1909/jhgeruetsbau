@@ -1,17 +1,18 @@
-$(document).ready(function() {
-    // Get the h1 and ortlist elements
-    var h1Element = $("#ort h1");
-    var ortListDiv = $("#ortlist");
+$(document).ready(function () {
+    // Hide the h1 initially
+    $("#ort").hide();
 
+    // Fade in the h1 with a duration of 1000 milliseconds (adjust as needed)
+    $("#ort").fadeIn(2500);
+
+    var ortListDiv = $("#ortlist");
+    
     // Hide the ortlist initially
     ortListDiv.hide();
-
-    // Use fadeIn to show the h1 with a fade-in effect
-    h1Element.fadeIn(2000, function() {
-        // Callback function: executed after the fadeIn animation is complete
-
-        // Array of cities
-        var cities = ["City1", "City2", "City3", "City4"];
+    
+    // Array of cities
+    var cities = ["München", "Benediktbeuern", "Bichl", "Bad Tölz", "Murnau am Staffelsee", "Kochel am See", "Penzberg", "Wolfratshausen", "Garmisch-Partenkirchen", "Schongau", "Weilheim in Oberbayern", "Landsberg am Lech", "Holzkirchen", "Krün", "Mittenwald", "Walchensee"  ]
+;
 
         // Create a <ul> element
         var ul = $("<ul>");
@@ -25,10 +26,10 @@ $(document).ready(function() {
             ul.append(li);
 
             // Delay each li's fadeIn based on its index
-            li.hide().delay(300 * index).fadeIn(500); // Adjust delay and fadeIn speed as needed
+            li.hide().delay(500 * index).fadeIn(800); // Adjust delay and fadeIn speed as needed
         });
 
         // Append the <ul> to the ortlist div and fadeIn
-        ortListDiv.append(ul).fadeIn(1000); // Adjust the fadeIn speed if needed
-    });
+        ortListDiv.append(ul).fadeIn(3000); // Adjust the fadeIn speed if needed
 });
+

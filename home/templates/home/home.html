@@ -9,10 +9,26 @@
     </div>
     <div id="service-request" class="col-9">
         <div class="col-12">
-            <h2>Besuch anfordern</h2>
+            <button type="button" class="request-button" data-bs-toggle="modal" data-bs-target="#serviceRequestModal">
+                <h2>Besuch anfordern</h2>
+            </button>            
             <p>Nach einem ersten Besuch können wir feststellen, welche Art von Gerüst wir Ihnen anbieten können und wie viel Zeit für die Montage benötigt wird.</p>
         </div>
-        <form action="#" method="post">
+    </div>
+</div>
+<!-- Add this modal structure at the end of your template -->
+<div class="modal fade" id="serviceRequestModal" tabindex="-1" role="dialog" aria-labelledby="serviceRequestModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="serviceRequestModalLabel">Besuch anfordern</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Move your form here -->
+          <form action="#" method="post">
             <div class="service-form"> 
                 <div class="row">
                     <div class="col-12 form-outline">
@@ -52,7 +68,10 @@
                     </div>
                 </div>
             </div>
-        </form>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
 {% endblock %}

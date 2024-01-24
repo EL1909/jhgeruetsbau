@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Hide the h1 initially
     $("#ort").hide();
 

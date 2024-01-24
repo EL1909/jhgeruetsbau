@@ -27,7 +27,6 @@ body    {
     padding: 40px 10px;
     background-color: none; /* Background color */
     width: 25%;
-    height: 100px;
     margin: 0;
 }
 
@@ -111,32 +110,21 @@ body    {
 
 #ort h4 {
     text-align: right;
+    margin-right: 25px;
 }
 
 #ortlist    {
     max-height: 450px;
     overflow: scroll;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-}
-
-#ortlist ul{
-    list-style-type: none;
+    padding: 0 5px;
 }
 
 /* Service Form */
 
 #service-request    {
     background-image: url('/media/site/andamio-2-01.png');
-    background-position: contain;
-    background-repeat: no-repeat;
-    background-blend-mode:hard-light;
-    background-size: 50%;
-    background-position-x: right;
-    background-position-y: 90%;
+    background-position: cover;
     width: 75%;
-    height: 500px;
     text-align: right;
     padding: 25px;
     box-sizing: border-box; /* Include padding in width/height calculations */
@@ -148,33 +136,15 @@ body    {
     height: 50px;
     font-family: 'Noto Sans', sans-serif;
     font-style: italic;
+    text-decoration: underline 4px #eb7506;
     color:#064bb1fc;
-    padding: 0;
+    margin-bottom: 20px;
 }
 
 #service-request  p {
     font-family: 'Raleway', sans-serif;
     font-style: italic;
     margin: 0 0 25px;
-}
-
-.request-button {
-    background-color: transparent;
-    border: 2px solid #064bb1fc;
-    border-radius: 5px;
-    margin: 25px;
-    padding: 5px 25px;
-    height: 50px;
-}
-
-.request-button:hover {
-    background-color: #eb7506;
-    color: #f2f1f1;
-    border: 2px solid #064bb1fc;
-    border-radius: 5px;
-    margin: 25px;
-    padding: 5px 25px;
-    height: 50px;
 }
 
 .service-form   {
@@ -216,6 +186,8 @@ input   {
     background-color: #f2f1f1;
 }
 
+
+/* Profile */
 /* Footer   */
 
 .footer {
@@ -296,59 +268,3 @@ input   {
 
 
 /* Media Queries---------------------------------- */
-
-@media (max-width: 768px) {
-    
-    .logo {
-        text-align: right;
-        width: 100%;
-        height: auto;
-        margin-top: 50px;
-        float: none;
-    }
-    
-    .call {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 25px;
-      border: 0;
-    }
-
-    .navbar-brand   {
-        position: relative;
-        top: 15px;
-    }
-
-    .call a {
-        text-decoration: none;
-        color: #064bb1fc;
-        width: 100%;
-        font-size: 1.5rem;
-    }
-
-    navbar-toggler {
-        top: 0;
-        left: 0;
-    }
-
-    #ort    {
-        font-size: 0.8em;
-        padding: none;
-        list-style: none;
-    }
-
-    #ort h1, #ort h4{
-        font-size: inherit;
-    }
-
-    #ortlist    {
-        text-align: right;
-        left: 0;
-        margin: auto;
-    }
-
-  }
-  
-  

@@ -5,20 +5,14 @@
 /* General*/
 
 body    {
-    min-height: 100%;
+    min-height: 100vh;
+    margin: 0;
     background: linear-gradient(to right, 
     #064bb1fc 25%, /* Deep blue */
     #eb7506 25%, /* Orange */
     #eb7506 25.5%, /* Orange continues for the 5% segment */
-    #f8f9fa 25.5% /* Rest of the background color */);
+    #f2f1f1 25.5% /* Rest of the background color */);
 }
-
-span    {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
 
 /* Top Banner*/
 
@@ -45,7 +39,6 @@ span    {
 
 .call:hover {
     background-color: #eb7506; /* Background color on hover */
-    padding: 40px 15px;
 }
 
 
@@ -67,7 +60,7 @@ span    {
     #064bb1fc 25%, /* Deep blue */
     #eb7506 25%, /* Orange */
     #eb7506 25.5%, /* Orange continues for the 5% segment */
-    #f8f9fa 25.5% /* Rest of the background color */);
+    #f2f1f1 25.5% /* Rest of the background color */);
     font-family: 'Raleway', sans-serif;
     display: flex;
     justify-content: space-between;
@@ -110,6 +103,9 @@ span    {
     color: #f2f1f1;
     font-family: 'Noto Sans', sans-serif;
     font-style: italic;
+    width: 25%;
+    box-sizing: border-box;
+    float: left;
 }
 
 #ort h4 {
@@ -125,54 +121,48 @@ span    {
 
 /* Service Form */
 
-.service-request    {
-    font-family: 'Raleway', sans-serif;
-    text-align: right;
-    margin: 25px;
-    padding: 0;
-    background-image: url(/media/site/andamio-2-01.png);
+#service-request    {
+    background-image: url('/media/site/andamio-2-01.png');
     background-position: cover;
-
+    width: 75%;
+    text-align: right;
+    padding: 25px;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
 }
 
-.service-request  h2  {
-    height: 100px;
+#service-request  h2  {
+    height: 50px;
     font-family: 'Noto Sans', sans-serif;
     font-style: italic;
-    text-decoration: underline 2px #eb7506;
-    color: #064bb1fc;
-    margin-bottom: 0;
+    text-decoration: underline 4px #eb7506;
+    color:#064bb1fc;
+    margin-bottom: 20px;
 }
 
-.service-request  p {
+#service-request  p {
     font-family: 'Raleway', sans-serif;
     font-style: italic;
-    margin-top: 0;
-    padding: 0;
+    margin: 0 0 25px;
 }
 
 .service-form   {
     width: 80%;
-    margin: 50px auto;
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-    /* font-size: 1em;
-    border: 1px solid #eb7506; */
+    margin: 10px auto;
 }
 
 .form-outline {
     background-color: none;
-    margin: 20px;
+    margin: 10px 0;
     text-align: left;
-    display: flex;
-    flex-direction: column;
 }
 
 input   {
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #eb7506;
-    width: 80%;
+    width: 100%;
 }
 
 .form-button {
@@ -183,17 +173,17 @@ input   {
     text-shadow: 2px solid #eb7506;
     color: #f8f9fa;
     border: solid 2px #eb7506;
-    padding: 5px 15px;
-    margin-bottom: 10px;
-    width: 80%;
+    width: 100%;
     display: inline-block;
+    align-items: center;
+    margin: 25px 0;
+    padding: 15px;
 }
 
-form hr {
-    width: 25px;
-    border: none; /* Optional: If you want to remove the default border */
-    background-color: #064bb1fc; /* Optional: Set the background color */
-    height: 2px; /* Optional: Set the height of the line */
+.form-button:hover  {
+    color: #eb7506;
+    border: solid 2px #064bb1fc;
+    background-color: #f2f1f1;
 }
 
 

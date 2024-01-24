@@ -11,8 +11,7 @@ $(document).ready(function () {
     ortListDiv.hide();
     
     // Array of cities
-    var cities = ["München", "Benediktbeuern", "Bichl", "Bad Tölz", "Murnau am Staffelsee", "Kochel am See", "Penzberg", "Wolfratshausen", "Garmisch-Partenkirchen", "Schongau", "Weilheim in Oberbayern", "Landsberg am Lech", "Holzkirchen", "Krün", "Mittenwald", "Walchensee"  ]
-;
+    var cities = ["München", "Benediktbeuern", "Bichl", "Bad Tölz", "Murnau am Staffelsee", "Kochel am See", "Penzberg", "Jachenau", "Weilheim", "Peißenberg", "Wolfratshausen", "Garmisch-Partenkirchen", "Schongau", "Weilheim in Oberbayern", "Landsberg am Lech", "Holzkirchen", "Krün", "Mittenwald", "Walchensee"];
 
         // Create a <ul> element
         var ul = $("<ul>");

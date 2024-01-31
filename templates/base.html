@@ -24,56 +24,61 @@
 <body>
     <header>
         <div>
-            <div class="logo">
-              <div class="call">
-                <a href="tel:+4901719389960">
-                  <i class="fa-solid fa-phone"></i> 0171 9389960
-                </a>
+          <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+              </button>                  
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="modalLink" aria-current="page" href="#">Kontakt</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{%  url 'leistungen' %}">Leistungen</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Über uns</a>
+                  </li>
+                </ul>
               </div>
-              <a class="navbar-brand" href="#">
-                <h2>Gerütsbau</h2>
-                <h2>Josef Hundegger</h2> 
+            </div>
+          </nav>
+          <div class="logo">
+            <div class="call">
+              <a href="tel:+4901719389960">
+                <i class="fa-solid fa-phone"></i> 0171 9389960
               </a>
             </div>
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>                  
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Kontakt</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Leistungen</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Über uns</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-            </nav>
+            <a class="navbar-brand" href="{%  url 'home' %}">
+              <h2>Gerütsbau</h2>
+              <h2>Josef Hundegger</h2> 
+            </a>
+          </div>
         </div>
     </header>
     <div class="container-fluid">
     {% block content %}
     {% endblock %}
     </div>
-    <!-- <footer>
-        <div class="tabs-footer">
-            <nav>
-                <ul>
-                    <li id="tab-servicios"><a href="#">Entwicklung</a></li>
-                    <li id="tab-opciones"><a href="#">Kontakt</a></li>
-                </ul>
-            </nav>
-            <div class="footer-logo">
-                <a href="/">Esfuerzo.</a>
-            </div>
+    <footer>
+      <div class="container-fluid">
+        <div class="footer-logo">
+          <a href="{%  url 'home' %}">
+            <h4>Gerütsbau</h4>
+            <h4>Josef Hundegger</h4> 
+          </a>
         </div>
-    </footer> -->
+        <div class="footer-call">
+          <a href="tel:+4901719389960">
+            <p><i class="fa-solid fa-phone"></i> 0171 9389960</p>
+            <p><i class="fa-solid fa-truck-fast"></i> Mondscheinweg 15,</p>
+            <p>83671 - Benediktbeuern</p>
+          </a>
+        </div>
+      </div>
+    </footer>
+    {% include 'home/modal.html' %}
     <!-- custom.js -->
     <script src="{% static 'js/custom.js' %}"></script>
     <!-- fontawesome -->

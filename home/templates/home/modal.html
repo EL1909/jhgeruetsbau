@@ -10,7 +10,8 @@
         </div>
         <div class="modal-body">
           <!-- Move your form here -->
-          <form action="#" method="post">
+          <form action="{% url 'termine:neue_termin' %}" method="post">
+            {% csrf_token %}
             <div class="service-form"> 
                 <div class="row">
                     <div class="col-12 form-outline">
@@ -30,8 +31,8 @@
                         <input type="date" id="visit_date" name="visit_date" required>
                     </div>
                     <div class="col-6 form-outline">
-                        <label for="duration">Mietdauer:</label>
-                        <input type="text" id="duration" name="duration" required>
+                        <label for="rent_timeframe">Mietdauer:</label>
+                        <input type="text" id="rent_timeframe" name="rent_timeframe" placeholder="Wie viele Wochen?" oninput="updatePlaceholder(this)" required>
                     </div>
                     <div class="col-12 form-outline">
                         <label for="address">Adresse:</label>
@@ -39,11 +40,15 @@
                     </div>
                     <div class="col-6 form-outline">
                         <label for="zipcode">Postleitzahl:</label>
-                        <input type="text" id="zipcode" name="zipcode" required>
+                        <input type="text" id="zipcode" name="zipcode">
                     </div>
                     <div class="col-6 form-outline">
                         <label for="city">Ort:</label>
                         <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="col-12 form-outline">
+                      <label for="notes">Kommentar:</label>
+                      <input type="text" id="notes" name="notes" required>
                     </div>
                     <div class="col-12">
                         <button class="form-button" type="submit">Besuch anfordern</button>
@@ -55,3 +60,18 @@
       </div>
     </div>
   </div>
+  <!-- Timeframe selection -->
+<script>
+  function updatePlaceholder(input) {
+      // Get the user input value
+      const userInput = input.value;
+
+      // Update the placeholder based on user input
+      if (userInput.trim() !== "") {
+          input.placeholder = `${userInput} Wochen`;
+      } else {
+          input.placeholder = "Wie viele Wochen?";
+      }
+  }
+</script>
+

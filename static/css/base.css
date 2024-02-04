@@ -9,15 +9,39 @@ html    {
     
 }
 
-body    {
+body {
     height: 100%;
     margin: 0;
-    background: linear-gradient(to right, 
-    #064bb1fc 25%, /* Deep blue */
-    #eb7506 25%, /* Orange */
-    #eb7506 25.5%, /* Orange continues for the 5% segment */
-    #f2f1f1 25.5% /* Rest of the background color */);
+    position: relative;
+    z-index: 1;
 }
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(to right, 
+    #064bb1fc 98%, /* Deep blue */
+    #eb7506 98%, /* Orange */
+    #eb7506 100% /* Rest of the background color */);
+    z-index: 1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 25%;
+    width: 75%;
+    height: 100%;
+    background-image: url('/media/site/jh1.jpeg'); /* Background image */
+    background-size: cover;  /* Optional: Adjust based on your needs */
+    z-index: 0;
+}
+
 
 body.scroll-bottom .footer {
     bottom: 0;
@@ -50,6 +74,7 @@ body.scroll-bottom .footer {
     height: 100px;
     margin: 0;
     text-align: center;
+    z-index: 101;
 }
 
 
@@ -62,6 +87,12 @@ body.scroll-bottom .footer {
 
 .call:hover {
     background-color: #eb7506; /* Background color on hover */
+    z-index: 1;
+}
+
+.navbar-brand   {
+    position: relative;
+    z-index: 50;
 }
 
 .logo   {
@@ -81,36 +112,63 @@ body.scroll-bottom .footer {
     position: relative;
     border: none;
     background: none;
+    z-index: 99;
 }
 
 .navbar-nav {
     margin: auto;
     display: flex;
-    align-items: flex-end;
     flex-direction: column;
+    align-items: flex-end;
     margin-right: 0;
+    z-index: 100;
 }
 
-.navbar-nav li  {
+.navbar-nav li {
     list-style: none;
     margin: 0 10px;
     padding: none;
-    display: block;
+}
+
+.navbar-nav a  {
+    color: #f2f1f1;
+    text-shadow: #064bb1fc;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
 }
 
 .navbar-nav a:hover    {
     font-weight:1.2rem;
-    color: #064bb1fc;
+    color: #eb7506;
 }
 
 .navbar-toggler {
     margin-top: 10px;
     margin-left: 10px;
-    z-index: 300;
+    z-index: 500;
     background-color: transparent;
-    border: 2px solid #f2f1f1 !important;;
-    color: #f2f1f1 !important;;
+    border: 2px solid #064bb1fc !important;
+    color: #064bb1fc !important;
 }
+
+/* Adjust hamburger menu expanded */
+.navbar-collapse    {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    height: fit-content;
+    width: 150px;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: italic;
+    z-index: 500;
+    background-color: #064bb1fc;
+    border: 2px solid #eb7506 !important;
+    }
+
+.navbar-collapse  a {
+    text-decoration:none;
+    padding: 5px;
+    }
 
 /* Left panel */
 
@@ -122,6 +180,7 @@ body.scroll-bottom .footer {
     width: 25%;
     box-sizing: border-box;
     float: left;
+    z-index: 100;
 }
 
 #ort h4 {
@@ -145,14 +204,14 @@ body.scroll-bottom .footer {
 /* Service Form */
 
 .service-request    {
-    background-image: url('/media/site/jh1.jpeg');
+    /* background-image: url('/media/site/jh1.jpeg');
     background-repeat: no-repeat;
     background-blend-mode:hue;
     background-size:cover;
     background-color: #f2f1f175;
     display: flex;
     flex-direction: column;
-    justify-content:first baseline;
+    justify-content:first baseline; */
     width: 100%;
     height: 95vh;
     padding: 25px 0;
@@ -161,7 +220,7 @@ body.scroll-bottom .footer {
     font-family: 'Raleway', sans-serif;
     text-align: right;
     /* border-top: 3px solid #eb7506;*/
-    border-left: 4px solid #eb7506; 
+    /* border-left: 4px solid #eb7506;  */
     z-index: 10;
     position: relative;
 }
@@ -182,6 +241,7 @@ body.scroll-bottom .footer {
     font-weight: bold;
     margin: 0 0 25px;
     top:0;
+    background-color: #f2f1f16a;
 }
 
 .request-button {
@@ -273,7 +333,7 @@ input   {
 .service-request  .icon {
     font-size: 8em;
     margin: 25px;
-    color: #eb750690;
+    color: #eb7506;
 }
 
 .service-request  .icon:hover {
@@ -299,7 +359,7 @@ footer  {
     color:#f2f1f1;
     background-color: #064bb1fc;
     border-top: 4px solid;
-    border-image: linear-gradient(to right, #064bb1fc 25%, #eb7506 25%) 1;
+    border-image: linear-gradient(to right, #064bb1fc 24.5%, #eb7506 24.5%) 1;
     height: 100px;
     text-align: left;
     padding: 25px 15px;
@@ -310,7 +370,7 @@ footer  {
     bottom: -100px;
     transition: bottom 0.5s ease; /* add smooth transition */
     width: 100%;
-    z-index: 20;
+    z-index: 120;
 
 }
 
@@ -334,6 +394,12 @@ footer p    {
 
 /* Media Queries---------------------------------- */
 
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-nav {
+        flex-direction: column !important;
+    }
+}
+
 @media (max-width: 768px) {
     
     .logo {
@@ -352,6 +418,14 @@ footer p    {
       height: 25px;
       border: 0;
     }
+    
+    .call a {
+        text-decoration: none;
+        color: #f2f1f1;
+        width: 100%;
+        font-size: 1.5rem;
+        text-align: right;
+    }
 
     .navbar {
         height: auto;
@@ -366,7 +440,15 @@ footer p    {
 
     .navbar-brand   {
         position: relative;
+        top: 45px;
+    }
+
+    .navbar-toggler {
+        position: fixed;
         top: 15px;
+        left: 20px;
+        color: #f2f1f1 !important;
+        border: 1px solid #f2f1f1 !important;ß
     }
 
     /* Adjust hamburger menu expanded */
@@ -384,19 +466,13 @@ footer p    {
 
     .nav-link {
         color: #f2f1f1 !important;
+        text-shadow: #064bb1fc;
     }
 
     .nav-link:hover {
         color: #eb7506;
     }
 
-    .call a {
-        text-decoration: none;
-        color: #064bb1fc;
-        width: 100%;
-        font-size: 1.5rem;
-        text-align: right;
-    }
 
     #ort    {
         font-size: 0.8em;
@@ -422,13 +498,12 @@ footer p    {
         height: 350px;
         background-size: 100%;
         padding: 0 25px;
-        border-left: 2px solid #eb7506;
         align-items: center;
         background-size: cover;
     }
 
     .service-request  h2  {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .request-button {
@@ -438,7 +513,6 @@ footer p    {
     .request-button:hover {
         padding: 10px 25px;
     }
-
 
     .leistung  {
         height: auto;

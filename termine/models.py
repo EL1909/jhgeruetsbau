@@ -17,7 +17,7 @@ class Termin(models.Model):
     address = models.CharField(max_length=255)
     zipcode = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
-    notes = models.ManyToManyField(Note, related_name='termin_notes')
+    notes = models.CharField(max_length=255, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):

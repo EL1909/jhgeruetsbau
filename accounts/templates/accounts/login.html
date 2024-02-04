@@ -1,0 +1,13 @@
+{% block content %}
+  {% load i18n %}
+
+  <h2>{% trans "Log In" %}</h2>
+  <form method="post" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% trans "Log In" %}</button>
+  </form>
+
+  <p><a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></p>
+  <p><a href="{% url 'account_signup' %}">{% trans "Don't have an account? Sign Up" %}</a></p>
+{% endblock %}

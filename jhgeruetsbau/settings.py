@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+from decouple import config
 from pathlib import Path
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8k1@0n$4vy%)rm6e1rlxv)c$2+)8%iat3%^mebr57lo27rl&4w'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'home',
     'termine',
 ]
@@ -48,9 +52,11 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
 
 ROOT_URLCONF = 'jhgeruetsbau.urls'
@@ -67,7 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -75,6 +81,8 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'jhgeruetsbau.wsgi.application'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
 # Database
@@ -86,6 +94,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 
 # Password validation
@@ -128,6 +144,17 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Redirect to home URL after login (use the URL where you want users to be redirected after login)
+LOGIN_REDIRECT_URL = '/'
+
+# Use email as the primary identifier for a user
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

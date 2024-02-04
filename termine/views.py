@@ -1,7 +1,9 @@
 from django.views import View
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.urls import reverse
 from django.http import JsonResponse
-from .models import Termin
+from .models import Termin, Note
 from .forms import TerminForm
 
 class TerminList(View):
@@ -17,15 +19,19 @@ class CreateTermin(View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        notes_formset = self.notes_formset_class()
+        return render(request, self.template_name, {'form': form, 'notes_formset':notes_formset})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
-        if form.is_valid():
-            termin = form.save()
-            data = {'message':f'Ihr neuer Termin ist am {termin.visit_date}'}
-            return JsonResponse(data)
+        if form.is_valid(): 
+            termin = form.save(commit=False)
+            termin.save()
+            messages.success(request, f'Ihr neuer Termin ist am {termin.visit_date}')
+            return redirect(reverse('home'))
         else:
             data = {'error': form.errors}
-            return JsonResponse(data, status=400)
+        return JsonResponse(data, status=400)
+        
+
 

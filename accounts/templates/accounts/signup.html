@@ -1,0 +1,24 @@
+{% extends "account/base_entrance.html" %}
+{% load allauth i18n socialaccount %}
+{% block head_title %}
+    {% trans "Signup" %}
+{% endblock head_title %}
+{% block content %}
+    {% element h1 %}
+        {% trans "Sign Up" %}
+    {% endelement %}
+    <p>
+        {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+    </p>
+    {% url 'account_signup' as action_url %}
+    <form method="post" action="{% url 'account_login' %}" tags="entrance,login">
+        {% csrf_token %}
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        <button type="submit" tags="prominent,login">{% trans "Sign In" %}</button>
+    </form>
+    
+    {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+{% endblock content %}

@@ -3,20 +3,18 @@
 {% block content %}
 <div class="row">
     <div id="ort" class="col-3">
-        <h1>Zuverlässige</h1>
-        <h4>und schnelle Montagen in:</h4>
-        <div id="ortlist"></div>
+        <h1>Termine</h1>
     </div>
     <div class="service-request col-9">
         <hr>
-        <h2>Termine</h2>
+        <h5>Neue Termine</h5>
         <ul>
-          {% for message in messages %}
+          {% for temine in termines %}
             <li>
-              {{ message.contact_person }} - {{ message.visit_date }}
+              {{ termine.contact_person }} - {{ terminee.visit_date }}
               <ul>
-                {% for note in message.notes.all %}
-                  <li>{{ note.content }} - {{ note.created_at }}</li>
+                {% for note in termine.notes.all %}
+                  <li>{{ termine.content }}</li>
                 {% endfor %}
               </ul>
             </li>

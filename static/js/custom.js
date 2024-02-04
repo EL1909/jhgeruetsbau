@@ -54,7 +54,7 @@ $(document).ready(function() {
         lastScrollTop = st;
     });
 
-    // Get the modal link element by its id
+    // Get the service request modal link element by its id
     var modalLink = document.getElementById("modalLink");
 
     // Add a click event listener to the link
@@ -69,5 +69,21 @@ $(document).ready(function() {
         var modalInstance = new bootstrap.Modal(modal);
         modalInstance.show();
     });
+
+        // Get the login modal link element by its id
+        var modalLink = document.getElementById("loginModalLink");
+
+        // Add a click event listener to the link
+        modalLink.addEventListener("click", function (event) {
+            // Prevent the default behavior of the link (e.g., navigating to another page)
+            event.preventDefault();
+    
+            // Get the modal element by its id
+            var modal = document.getElementById("loginModal");
+    
+            // Use Bootstrap's modal API to show the modal
+            var modalInstance = new bootstrap.Modal(modal);
+            modalInstance.show();
+        });
 });
 

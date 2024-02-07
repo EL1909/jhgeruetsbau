@@ -18,23 +18,12 @@
             <div class="modal-body">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="loginContent" role="tabpanel" aria-labelledby="login-tab">
-                        <h2>Anmelden</h2>
-                        <form method="post" action="{% url 'account_login' %}">
-                          {% csrf_token %}
-                          {{ form.as_p }}
-                          {% include 'accounts/login.html' %}
-                          <button type="submit">Anmelden</button>
-                        </form>
+                        {% block login_content %}
+                        {% include 'accounts/login.html' %}
+                        {% endblock login_content %}
                     </div>
                     <div class="tab-pane fade" id="signupContent" role="tabpanel" aria-labelledby="register-tab">
-                        <!-- Registration Form -->
-                        <h2>Konto Erstellen</h2>
-                        <form method="post" action="{% url 'account_signup' %}" tags="entrance,register">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            {% include 'accounts/signup.html' %}
-                            <button type="submit" tags="prominent,register">Register</button>
-                        </form>
+                        {% include 'accounts/signup.html' %}
                     </div>
                 </div>
             </div>

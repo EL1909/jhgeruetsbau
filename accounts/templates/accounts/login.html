@@ -1,13 +1,11 @@
-{% block content %}
-  {% load i18n %}
-
-  <h2>{% trans "Log In" %}</h2>
+{% block login_content %}
+  <h2>Anmelden</h2>
   <form method="post" action="{% url 'account_login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% trans "Log In" %}</button>
+      <div class="service-form"> 
+      {{ form.as_p }}
+      </div>
+    <button type="submit">Anmelden</button>
   </form>
-
-  <p><a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></p>
-  <p><a href="{% url 'account_signup' %}">{% trans "Don't have an account? Sign Up" %}</a></p>
-{% endblock %}
+  <p><a href="{% url 'account_reset_password' %}">Kennwort vergessen?</a></p>
+{% endblock login_content %}

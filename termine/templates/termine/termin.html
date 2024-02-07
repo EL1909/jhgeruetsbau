@@ -1,26 +1,33 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block content %}
-<div class="row">
+  <div class="row">
     <div id="ort" class="col-3">
-        <h1>Termine</h1>
+      <h1>Termine</h1>
+      <ul class="termin-list">
+        {% for termin in termins %}
+          <li data-termin-id="{{ termin.id }}" class="termin-item">
+            {{ termin.contact_person }} - {{ termin.visit_date }}
+            <hr>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
     <div class="service-request col-9">
-        <hr>
-        <h5>Neue Termine</h5>
-        <ul>
-          {% for temine in termines %}
-            <li>
-              {{ termine.contact_person }} - {{ terminee.visit_date }}
-              <ul>
-                {% for note in termine.notes.all %}
-                  <li>{{ termine.content }}</li>
-                {% endfor %}
-              </ul>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endblock %}
+      <div id="selected-termin" class="selected-termin">
+          <div class="row">
+            <div class="col-12 form-outline" id="termin_name"><p>{{ termin.contact_person}}</p></div>
+            <div class="col-6 form-outline" id="termin_phone"><p>Contact Person</p></div>
+            <div class="col-6 form-outline" id="termin_email"><p>Contact Person</p></div>
+            <div class="col-6 form-outline" id="termin_visit_date"><p>Contact Person</p></div>
+            <div class="col-6 form-outline" id="termin_rent_timeframe"><p>Contact Person</p></div>
+            <div class="col-12 form-outline" id="termin_address"><p>Contact Person</p></div>
+            <div class="col-6 form-outline" id="termin_zipcode"><p>Contact Person</p></div>
+            <div class="col-6 form-outline" id="termin_city"><p>Contact Person</p></div>
+            <div class="col-12 form-outline" id="termin_notes"><p>Contact Person</p></div>
+          </div>
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}

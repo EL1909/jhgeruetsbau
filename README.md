@@ -78,53 +78,12 @@ INSTALLED_APPS = [
 ]
 -DONE-
 
-Make sure to run python manage.py makemigrations and python manage.py migrate after these changes.
 
-
-API Endpoints:
-
-Create API endpoints to send and retrieve messages. For example:
-
-POST /api/messages/: To send a message.
-GET /api/messages/: To retrieve messages for the logged-in user.
-
-Frontend (Client-side):
-Modify your frontend code to make API requests when sending and retrieving messages.
-
-
-javascript
-Copy code
-
-// Example using Fetch API for sending a message
-const sendMessage = (content, receiverId) => {
-    fetch('/api/messages/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // Include the user's access token
-        },
-        body: JSON.stringify({ content, receiverId }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Handle success or error
-    });
-};
-
-// Example using Fetch API for retrieving messages
-const getMessages = () => {
-    fetch('/api/messages/', {
-        headers: {
-            'Authorization': 'Bearer YOUR_ACCESS_TOKEN', // Include the user's access token
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Handle received messages
-    });
-};
 Ensure that you send the user's access token (obtained during authentication) in the Authorization header for authenticated requests.
 Authentication:
+
+Install Djando Allauth for user administration
+
 Make sure your users are authenticated before allowing them to send or retrieve messages. Use a token-based authentication system, such as JWT (JSON Web Tokens).
 Security:
 Implement proper security measures, such as input validation, authentication checks, and secure communication (use HTTPS).

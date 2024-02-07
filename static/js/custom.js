@@ -1,26 +1,27 @@
 $(document).ready(function() {
+
     // Hide the h1 initially
     $("#ort").hide();
 
     // Fade in the h1 with a duration of 1000 milliseconds (adjust as needed)
     $("#ort").fadeIn(2500);
 
-    var ortListDiv = $("#ortlist");
+    var leistungenDiv = $("#leistungen");
     
-    // Hide the ortlist initially
-    ortListDiv.hide();
-    
-    // Array of cities
-    var cities = ["München", "Benediktbeuern", "Bichl", "Bad Tölz", "Murnau am Staffelsee", "Kochel am See", "Penzberg", "Jachenau", "Weilheim", "Peißenberg", "Wolfratshausen", "Garmisch-Partenkirchen", "Schongau", "Weilheim in Oberbayern", "Landsberg am Lech", "Holzkirchen", "Krün", "Mittenwald", "Walchensee"];
+    // Array of leistungen
+    var leistungen = ["Fassadengerüste", "Schutzgerüste", "Raumgerüste", "Fahrgerüste", "Trag - & Stützgerüste", "Passantentunnel", "Treppentürmee", "Personenaufzüge", "Sonderkonstruktionen für Kirchtürme", "Fluchttreppen und Kraftwerke"];
 
     // Create a <ul> element
     var ul = $("<ul>");
 
-    // Iterate through the cities array
-    cities.forEach(function(city, index) {
-        // Create a <li> element for each city
-        var li = $("<li>").text(city);
-
+    // Iterate through the leistungen array
+    leistungen.forEach(function(leistung, index) {
+        // Create a <li> element for each leistung
+        var li = $("<li>");
+        // Create a <span> for the Font Awesome icon
+        var icon = $("<span>").addClass("fa fa-wrench"); // Adjust the class for your desired Font Awesome icon
+        // Append the icon and text to the <li>
+        li.append(icon).append(" " + leistung); // Adjust spacing if needed
         // Append the <li> element to the <ul>
         ul.append(li);
 
@@ -29,61 +30,17 @@ $(document).ready(function() {
     });
 
     // Append the <ul> to the ortlist div and fadeIn
-    ortListDiv.append(ul).fadeIn(3000); // Adjust the fadeIn speed if needed
+    leistungenDiv.append(ul).fadeIn(3000); // Adjust the fadeIn speed if needed
 
-    var footer = $('footer');
-    var footerHeight = footer.outerHeight();
-    var lastScrollTop = 0;
-
-    // Show/hide footer as the user scrolls
-    $(window).scroll(function() {
-        var scrolledHeight = $(document).height() - $(window).height() - $(window).scrollTop();
-        var st = $(this).scrollTop();
-    
-        if (st > lastScrollTop || scrolledHeight < footerHeight * 1.5) {
-            // Scrolling down or near the bottom of the page
-            footer.css('bottom', '0');
-        } else {
-            // Scrolling up
-            if (window.innerWidth <= 768) {
-                // For mobile devices, adjust the condition based on your needs
-                footer.css('bottom', -footerHeight + 'px');
-            }
+    // Function to close navbar when clicking outside of it
+    $(document).click(function(event) {
+        var navbarNav = $(".navbar-nav");
+        // Check if the clicked element is not within the navbar-nav
+        if (!navbarNav.is(event.target) && navbarNav.has(event.target).length === 0) {
+            // Close the navbar by removing the 'show' class
+            navbarNav.removeClass("show");
         }
-    
-        lastScrollTop = st;
     });
 
-    // Get the service request modal link element by its id
-    var modalLink = document.getElementById("modalLink");
-
-    // Add a click event listener to the link
-    modalLink.addEventListener("click", function (event) {
-        // Prevent the default behavior of the link (e.g., navigating to another page)
-        event.preventDefault();
-
-        // Get the modal element by its id
-        var modal = document.getElementById("serviceRequestModal");
-
-        // Use Bootstrap's modal API to show the modal
-        var modalInstance = new bootstrap.Modal(modal);
-        modalInstance.show();
-    });
-
-        // Get the login modal link element by its id
-        var modalLink = document.getElementById("loginModalLink");
-
-        // Add a click event listener to the link
-        modalLink.addEventListener("click", function (event) {
-            // Prevent the default behavior of the link (e.g., navigating to another page)
-            event.preventDefault();
-    
-            // Get the modal element by its id
-            var modal = document.getElementById("loginModal");
-    
-            // Use Bootstrap's modal API to show the modal
-            var modalInstance = new bootstrap.Modal(modal);
-            modalInstance.show();
-        });
 });
 

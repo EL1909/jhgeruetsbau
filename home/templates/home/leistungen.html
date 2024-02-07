@@ -1,34 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="row">
-    <div id="ort" class="col-3">
-        <h1>Zuverlässige</h1>
-        <h4>und schnelle Montagen in:</h4>
-        <div id="ortlist"></div>
-    </div>
-    <div class="service-request col-9">
-        <hr>
-        <div class="row">
-            <div class="col-6 leistung">
-                <i class="fa-solid fa-wrench icon"></i>
-                <h5>Gerüstbau und Montage</h5>
-            </div>
-            <div class="col-6 leistung">
-                <i class="fa-regular fa-clock icon"></i>
-                <h5>Gerüstvermietung</h5>
-            </div>
+<hr>
+<div class="leistungen row">
+    <div class="col-12 col-md-6">
+        <div class="p-4">
+            <h2>Josef Hundegger Gerüstbau</h2>
         </div>
-        <div class="row">
-            <div class="col-6 leistung">
-                <i class="fa-regular fa-hand-peace icon"></i>
-                <h5>Gerütsplanung und Beratung</h5>
-            </div>
-            <div class="col-6 leistung">
-                <i class="fa-solid fa-pen-ruler icon"></i>
-                <h5>Gerütsprüfung und Wartung</h5>
-            </div>
+        <div class="">
+            <p>"Wir sind seit 40 Jahren Ihr traditioneller Gerüstbau Fachbetrieb im Alpenvorland.</p> 
+            <p>Durch unser Team aus 15 Mitarbeitern, können wir eine kurzfristige und termingerechte Abwicklung, Ihrer Wünsche sicher stellen und Ihnen individuelle Lösungen in den aufgeführten Bereichen an: </p>
+            <p> Egal ob privat oder gewerblich - gerne beraten wir Sie vor Ort und arbeiten ein passendes Angebot für Sie aus! Team Gerüstbau Hundegger" </p>
         </div>
     </div>
+    <hr class="d-md-none hr-mobile">
+    <div class="col-12 col-md-6 order-md-last" id="leistungen"></div>
 </div>
 {% endblock %}

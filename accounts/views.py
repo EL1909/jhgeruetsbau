@@ -1,12 +1,17 @@
-from allauth.account.forms import LoginForm
-from django.shortcuts import render
+from allauth.account.forms import LoginForm, SignupForm
+from allauth.account.views import LoginView, SignupView
+from django.contrib.auth import logout
+from django.shortcuts import render, redirect
 
-def login_view(request):
-    form = LoginForm()
-    return render(request, 'accounts/login.html', {'form':form})
 
-def logout_view(request):
-    return render(request, 'accounts/logout.html')
+class LoginView(LoginView):
+    template_name = 'accounts/login.html'
 
-def signup_view(request):
-    return render(request, 'accounts/signup.html')
+
+class SignupView(SignupView):
+    template_name = 'accounts/signup.html'
+
+
+def direct_logout_view(request):
+    logout(request)
+    return redirect('home')

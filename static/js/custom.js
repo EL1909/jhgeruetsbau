@@ -1,10 +1,44 @@
 $(document).ready(function() {
-
+    
     // Hide the h1 initially
     $("#ort").hide();
 
     // Fade in the h1 with a duration of 1000 milliseconds (adjust as needed)
     $("#ort").fadeIn(2500);
+
+    let footer = $('footer');
+    let footerHeight = footer.outerHeight();
+    let lastScrollTop = 0;
+
+    // Show/hide footer as the user scrolls
+    $(window).scroll(function() {
+        var scrolledHeight = $(document).height() - $(window).height() - $(window).scrollTop();
+        var st = $(this).scrollTop();
+    
+        if (scrolledHeight == 0) {
+            footer.css('bottom', '0');
+        } else {
+            // Hide the footer if user is not at the bottom of the page
+            if (window.innerWidth <= 768) {
+                // For mobile devices, adjust the condition based on your needs
+                footer.css('bottom', -footerHeight + 'px');
+            }
+        }
+    
+        lastScrollTop = st;
+    });
+
+    // Leistungen tab behivor
+
+    $('#leistungen-tab').click(function() {
+        // Scroll the page to the top position of the second-content div
+        $('html, body').animate({
+            scrollTop: $('#second-content').offset().top
+        }, 1000); // Adjust the duration of the animation as needed (in milliseconds)
+    });
+
+
+    // Handling leistungen list's behivor
 
     var leistungenDiv = $("#leistungen");
     
@@ -19,9 +53,9 @@ $(document).ready(function() {
         // Create a <li> element for each leistung
         var li = $("<li>");
         // Create a <span> for the Font Awesome icon
-        var icon = $("<span>").addClass("fa fa-wrench"); // Adjust the class for your desired Font Awesome icon
+        var icon = $("<span>").addClass("fas fa-wrench");
         // Append the icon and text to the <li>
-        li.append(icon).append(" " + leistung); // Adjust spacing if needed
+        li.append(icon).append("  " + leistung); // Adjust spacing if needed
         // Append the <li> element to the <ul>
         ul.append(li);
 
@@ -41,6 +75,4 @@ $(document).ready(function() {
             navbarNav.removeClass("show");
         }
     });
-
 });
-

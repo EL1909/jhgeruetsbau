@@ -50,7 +50,7 @@
                             <a class="nav-link" id="modalLink" aria-current="page" href="#">Kontakt</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'leistungen' %}">Leistungen</a>
+                            <a id="leistungen-tab" class="nav-link"">Leistungen</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="loginModalLink" href="#">Anmelden</a>
@@ -62,14 +62,12 @@
           </nav>
       </div>
     </header>
-    <div id="home" class="content">
+    <div id="first-content" class="content">
     {% block content %}
     {% endblock %}
     </div>
-    <div class="scroll-down-indicator">
-      <i class="fa-solid fa-arrows-down-to-line"></i>
-    </div>
-    <div class="content">
+    <div id="second-content" class="content">
+    {% include 'home/leistungen.html' %}
     </div>
     <footer>
       <div class="container-fluid">

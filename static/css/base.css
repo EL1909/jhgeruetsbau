@@ -48,8 +48,11 @@ body.scroll-bottom .footer {
 
 /* Top Banner*/
 
+.navbar-container  {
+    position: fixed;
+}
+
 .navbar-brand   {
-    position: relative;
     top: 5px;
     left: 15px;
     background-color: none; /* Background color */
@@ -85,7 +88,7 @@ body.scroll-bottom .footer {
     flex-direction: column;
     align-items: flex-end;
     margin-right: 0;
-    z-index: 100;
+    z-index: 300;
 }
 
 .navbar-nav li {
@@ -132,6 +135,7 @@ body.scroll-bottom .footer {
     background-color: #01060f15;
     border: 1px solid #01060f;
     border-radius: 10px;
+    z-index: 500;
     }
 
 .navbar-collapse  a {
@@ -176,8 +180,14 @@ body.scroll-bottom .footer {
     scroll-behavior: smooth;
 } */
 
-.home {
-    height: 90vh;
+#first-content {
+    height: 100vh;
+}
+
+#second-content {
+    position: sticky;
+    top: 100px;
+    height: 80vh;
 }
 
 /* Service Form */
@@ -275,24 +285,25 @@ input   {
 
 .leistungen  {
     position: relative;
+    height: 65vh;
+    width: auto;
     background-color: #01060f7e;
     border: 1px solid #01060f;
-    border-radius: 10px;
-    height: 75vh;
-    width: auto;
     border-radius: 15px;
     color: #f2f1f1;
     font-family: 'Raleway', sans-serif;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
+    align-items:start;
     justify-content: center;
     z-index: 5000;
+    margin-bottom: 25px;
 }
 
 .leistungen ul {
+    margin-top: 25px;
     list-style: none;
-    padding: 10px;
+    padding: 10px 25px;
     font-size: 1.3rem;
 }
 
@@ -351,7 +362,7 @@ input   {
 /* Footer   */
 
 footer  {
-    color:#f2f1f1;
+    color:#f2f1f1;  
     background-color: #ffffff68;
     border-top: 1px solid #ffffff68;
     height: 50px;
@@ -438,6 +449,7 @@ footer p    {
         height: fit-content;
         background-color: #01060f9d;
         border: 1px solid #01060f;
+        border-radius: 15px;
         padding-top: 10px;
         flex-direction: column;
         align-items: center;
@@ -464,14 +476,15 @@ footer p    {
     #ort    {
         padding: none;
         width: 100%;
-        top:150px;
+        top: 175px;
         right: 0;
         z-index: 10;
         text-align: right;
     }
 
     #ort h1 {
-        font-size: 1.5em;
+        font-size: 1.4em;
+        text-align: left;
     }
 
     /* Leistungen */
@@ -495,7 +508,7 @@ footer p    {
     .hr-mobile {
         width: 40px;
         border: none;
-        border-top: 2px solid #f2f1f1 /* Adjust thickness and color as needed */
+        border-top: 6px solid #f2f1f1 /* Adjust thickness and color as needed */
     }
 
 

@@ -3,6 +3,14 @@ $(document).ready(function() {
     // Hide the h1 initially
     $("#ort").hide();
 
+    // Auto-Hide Expanded Menu
+    const navbarContainer = $('.navbar-collapse');
+
+    navbarContainer.on('mouseleave', function() {
+        // Hide the navbar when the user leaves its container
+        navbarContainer.removeClass('show');
+    });
+
     // Fade in the h1 with a duration of 1000 milliseconds (adjust as needed)
     $("#ort").fadeIn(2500);
 
@@ -28,22 +36,22 @@ $(document).ready(function() {
         lastScrollTop = st;
     });
 
-    // Leistungen tab behivor
-
+    // Leistungen show as tab is clicked behavior
     $('#leistungen-tab').click(function() {
         // Scroll the page to the top position of the second-content div
         $('html, body').animate({
             scrollTop: $('#second-content').offset().top
-        }, 1000); // Adjust the duration of the animation as needed (in milliseconds)
+        }, 500); // Adjust the duration of the animation as needed (in milliseconds)
     });
 
 
-    // Handling leistungen list's behivor
+    // Handling leistungen list's behavior
 
     var leistungenDiv = $("#leistungen");
+    var kontaktLi = $("#loginModalLink");
     
     // Array of leistungen
-    var leistungen = ["Fassadengerüste", "Schutzgerüste", "Raumgerüste", "Fahrgerüste", "Trag - & Stützgerüste", "Passantentunnel", "Treppentürmee", "Personenaufzüge", "Sonderkonstruktionen für Kirchtürme", "Fluchttreppen und Kraftwerke"];
+    var leistungen = ["Fassadengerüste", "Schutzgerüste", "Raumgerüste", "Fahrgerüste", "Trag - & Stützgerüste", "Passantentunnel", "Treppentürme", "Personenaufzüge", "Sonderkonstruktionen für Kirchtürme", "Fluchttreppen", "Kraftwerke"];
 
     // Create a <ul> element
     var ul = $("<ul>");
@@ -61,6 +69,7 @@ $(document).ready(function() {
 
         // Delay each li's fadeIn based on its index
         li.hide().delay(500 * index).fadeIn(800); // Adjust delay and fadeIn speed as needed
+        
     });
 
     // Append the <ul> to the ortlist div and fadeIn

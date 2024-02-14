@@ -18,7 +18,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,400;0,500;0,600;1,400;1,500;1,600&family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Protest+Guerrilla&display=swap" rel="stylesheet">
     <title>Josef Hundegger Gerütsbau</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
                 <i class="fa-solid fa-bars"></i>
               </button>  
           </div>
-          <nav class="navbar navbar-expand-xl">                
+          <nav class="navbar">                
               <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     {% if user.is_authenticated %}
@@ -70,23 +70,32 @@
     {% include 'home/leistungen.html' %}
     </div>
     <footer>
-      <div class="container-fluid">
-        <div class="footer-logo">
-          <a href="{%  url 'home' %}">
-            <img src="/media/site/logo3.png" alt="Logo">
+      <div class="row">
+        <div class="col footer-logo">
+          <a href="{% url 'home' %}">
+            <div class="line1">Gerüstbau</div>
+            <div class="line2">Josef Hundegger e.K</div>
           </a>
         </div>
-        <div class="footer-call">
-          <a href="tel:+4901719389960">
-            <i class="fa-solid fa-phone"></i> 0171 9389960
-          </a>
+        <div class="col footer-call">
+          <a href="{% url 'home' %}">
+            <div class="line1">
+              <a href="tel:+4901719389960">
+                <i class="fa-solid fa-phone"></i> 0171 9389960
+              </a>
+            </div>
+            <div class="line2">
+              <a href="tel:+4901719389960">
+                <i class="fa-solid fa-phone"></i> 0171 9389960
+              </a>
+            </div>
         </div>
-        <div>
-            <p><i class="fa-solid fa-truck-fast"></i> Mondscheinweg 15,</p>
-            <p>83671 - Benediktbeuern</p>
+        <div class="col addresse">
+          <p><i class="fa-solid fa-truck-fast"></i> Mondscheinweg 15,</p>
+          <p>83671 - Benediktbeuern</p>
         </div>
       </div>
-    </footer>
+    </footer>    
     {% include 'home/modal.html' %}
     {% include 'accounts/loginmodal.html' %}
     <!-- custom.js -->

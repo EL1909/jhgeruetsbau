@@ -1,6 +1,6 @@
 /* CSS Rules for JH Geruestbau */
 
-/* Google Fonts Noto Sans and Raleway*/
+/* Google Fonts Protest Guerrilla and Domine*/
 
 /* General*/
 
@@ -25,10 +25,9 @@ body::before {
     height: 100%;
     z-index: 1;
     background-image: url('/media/site/jh1.jpeg'); /* Background image */
-    background-size: cover;  /* Optional: Adjust based on your needs */
+    background-size: cover;
     z-index: 0;
 }
-
 
 body.scroll-bottom .footer {
     bottom: 0;
@@ -70,12 +69,12 @@ body.scroll-bottom .footer {
     height: 100px;
     text-align: left;
     padding: 15px;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Domine", serif;
     font-style: italic;
 }
 
 .navbar  {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Domine", serif;
     position: relative;
     border: none;
     background: none;
@@ -100,7 +99,7 @@ body.scroll-bottom .footer {
 .navbar-nav a  {
     color: #f2f1f1;
     text-shadow: #064bb1fc;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Domine", serif;
     font-style: italic;
 }
 
@@ -129,7 +128,7 @@ body.scroll-bottom .footer {
     right: 0;
     height: fit-content;
     width: 150px;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Domine", serif;
     font-style: italic;
     z-index: 500;
     background-color: #01060f15;
@@ -147,17 +146,17 @@ body.scroll-bottom .footer {
 
 #ort    {
     position: absolute;
-    top: 175px;
+    top: 375px;
     right: 15px;
     color: #f2f1f1;
-    font-family: 'Raleway', sans-serif;
+    font-family:"Protest Guerrilla", sans-serif;
     width: 350px;
     height: 125px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #01060f7e;
+    background-color: #01060fa9;
     border: 1px solid #01060f;
     border-radius: 10px;
     z-index: 100;
@@ -190,9 +189,9 @@ body.scroll-bottom .footer {
     height: 80vh;
 }
 
-/* Service Form */
+/* Modal Service & Form */
 
-.request-button {
+/* .request-button {
     background-color: #064bb1fc;
     border: 2px solid #eb7506;
     border-radius: 5px;
@@ -214,11 +213,32 @@ body.scroll-bottom .footer {
 
 .service-request  h2:hover {
     color: #f2f1f1;
+} */
+
+#serviceRequestModal    {
+    background-color: #01060f7e;
+}
+
+.modal-header a {
+    text-decoration: none;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-style: italic;
+    color: #f2f1f1;
+}
+
+.modal-header a:hover {
+    color: #eb7506;
+}
+
+.modal-content   {
+    width: 80%;
+    margin: 10px auto;
+    background-color: #01060f7e !important;
+    border: 1px solid #01060f;
 }
 
 .service-form   {
-    width: 80%;
-    margin: 10px auto;
+    color: #f2f1f1;
 }
 
 .form-outline {
@@ -230,18 +250,21 @@ body.scroll-bottom .footer {
 input   {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #eb7506;
+    border-bottom: 1px solid #eb7506;
     width: 100%;
+    color: #eb7506;
+    text-align: right;
 }
 
 .form-button {
-    background-color: #064bb1fc;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 1.2em;
+    background-color: #eb7506;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-style: italic;
+    font-size: 1.5em;
     font-weight: bolder;
-    text-shadow: 2px solid #eb7506;
     color: #f2f1f1;
     border: solid 2px #eb7506;
+    border-radius: 15px;
     width: 100%;
     display: inline-block;
     align-items: center;
@@ -251,23 +274,23 @@ input   {
 
 .form-button:hover  {
     color: #eb7506;
-    border: solid 2px #064bb1fc;
+    border: solid 2px #01060f;
     background-color: #f2f1f1;
 }
 
 .close  {
-    background-color: none;
-    border: solid 2px #064bb1fc;
-    color: #064bb1fc;
+    background-color: #01060f;
+    border: solid 1px #eb7506;
+    color: #eb7506;
 }
 
 .close:hover  {
     background-color: #eb7506;
-    border: solid 2px #064bb1fc;
+    border: solid 2px #f2f1f1;
     color: #f2f1f1;
 }
 
-.scroll-down-indicator  {
+/* .scroll-down-indicator  {
     position: fixed;
     bottom: 10px;
     left: 50%;
@@ -279,7 +302,7 @@ input   {
 
 .scroll-down-indicator i    {
     font-size: 1.5em;
-}
+} */
 
 /* Leistungen */
 
@@ -287,24 +310,35 @@ input   {
     position: relative;
     height: 65vh;
     width: auto;
-    background-color: #01060f7e;
+    background-color: #01060fa9;
     border: 1px solid #01060f;
     border-radius: 15px;
     color: #f2f1f1;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Protest Guerrilla", sans-serif;
     box-sizing: border-box;
     display: flex;
     align-items:start;
     justify-content: center;
-    z-index: 5000;
+    z-index: 450;
     margin-bottom: 25px;
+}
+
+.leistungen p   {
+    font-family: "Domine", serif;
+    font-weight: 700;
 }
 
 .leistungen ul {
     margin-top: 25px;
     list-style: none;
-    padding: 10px 25px;
-    font-size: 1.3rem;
+    padding: 20px 25px;
+    font-size: 1rem;
+    font-family: "Domine", serif;
+    font-weight: 700;
+}
+
+.leistungen li {
+    padding: 5px;
 }
 
 .leistungen li:hover {
@@ -321,8 +355,6 @@ input   {
     text-align: left;
     scroll-behavior: smooth;
 }
-
-
 
 .service-request  .icon {
     font-size: 8em;
@@ -341,11 +373,10 @@ input   {
     width: 300px;
     height: 25px;
     text-align: center;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Protest Guerrilla", sans-serif;
     font-style: italic;
     font-weight: bolder;
 }
-
 
 .termin-list   {
     text-align: left;
@@ -362,59 +393,63 @@ input   {
 /* Footer   */
 
 footer  {
-    color:#f2f1f1;  
-    background-color: #ffffff68;
-    border-top: 1px solid #ffffff68;
-    height: 50px;
-    text-align: left;
-    padding: 25px 15px;
-    font-family: 'Noto Sans', sans-serif;
-    font-style: italic;
-    font-size: .8em;
-    position: fixed;
+    position: relative;
     bottom: -100px;
-    transition: bottom 0.5s ease; /* add smooth transition */
+    background-color: #01060fa9;
+    border: 1px solid #01060f;
+    height: 75px;
     width: 100%;
+    text-align: left;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-size: 1em;
     z-index: 120;
-    color:#01060f;
-
+    transition: bottom 0.5s ease; /* add smooth transition */
+    align-items: center;
+    padding: 10px 10px;
 }
 
-.footer-logo img    {
-    width: auto;
-    height: 30px;
+.footer-logo    {
+    left: 10px;
+}
+
+.line1, .line2 {
+    display: block;
+    font-size: 1em;
+}  
+
+.line2 {
+    margin-top: .1em; /* Adjust as needed */
 }
 
 .footer-call    {
-    margin:0;
-    margin-right: 10px;
     width: fit-content;
+    text-align: center;
 }
 
 footer a    {
     text-decoration: none;
-    color: #01060f;
-    font-size: 1.5em;
+    color: #f2f1f1;
+    font-size: 1em;
 }
 
 footer a:hover   {
-    color: #f2f1f1;
-    font-size: 1.5em;
+    color: #eb7506;
+    font-size: 1.2em;
+    padding: 0;
 }
 
 footer p    {
+    color: #f2f1f1;
     padding: 0 5px;
     margin: 0;
 }
 
+.addresse   {
+    text-align: right;
+}
+
 
 /* Media Queries---------------------------------- */
-
-@media (min-width: 768px) {
-    .navbar-expand-md .navbar-nav {
-        flex-direction: column !important;
-    }
-}
 
 @media (max-width: 768px) {
 
@@ -424,11 +459,13 @@ footer p    {
     }
 
     .logo   {
-        padding: 0;
+        padding: 15px;
     }
     .navbar-brand img   {
         width: 60%;
         height: auto;
+        top: 15px;
+        left: 15px;
     }
 
     .navbar-toggler {
@@ -555,26 +592,30 @@ footer p    {
     }
     
     footer  {
+        position: fixed;
         height: 75px;
     }
     
     .footer-call    {
         margin: 5px 0;
-        margin-right: 10px;
         width: 40%;
     }
     
     footer a    {
         text-decoration: none;
         color: #f2f1f1;
-        font-size: .8em;
-        
+        font-size: 1em;
     }
     
-    footer p    {
-        padding: 5px;
-        margin: 0;
+    .addresse   {
+        font-size: .7em;
+        width: 50%;
         text-align: right;
+    }
+
+    .footer-logo    {
+        left: 0;
+        text-align: left;
     }
 
 }

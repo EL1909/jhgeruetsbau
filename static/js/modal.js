@@ -14,6 +14,7 @@ $(document).ready(function() {
         var modalInstance = new bootstrap.Modal(modal);
         modalInstance.show();
     });
+    
 
     // Get the login modal link element by its id
      var loginModalLink = document.getElementById("loginModalLink");
@@ -30,5 +31,6 @@ $(document).ready(function() {
         var modalInstance = new bootstrap.Modal(modal);
         modalInstance.show();
     });
+
 });
 

@@ -63,6 +63,12 @@
           </nav>
       </div>
     </header>
+    {% for message in messages %}
+    <div class="success-message">{{ message }}</div>
+    {% endfor %}
+    {% for message in form.errors %}
+    <div class="error-message">{{ message }}</div>
+    {% endfor %}
     <div id="first-content" class="content">
     {% block content %}
     {% endblock %}
@@ -86,9 +92,10 @@
               </a>
             </div>
             <div class="line2">
-              <a href="tel:+4901719389960">
-                <i class="fa-solid fa-phone"></i> 0171 9389960
-              </a>
+              <a href="mailto:hundegger.geruestbau@t-online.de?subject=Message%20from%20website"">
+                hundegger.geruestbau@t-online.de
+            </a>
+            
             </div>
         </div>
         <div class="col addresse">

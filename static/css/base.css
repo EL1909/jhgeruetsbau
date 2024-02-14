@@ -54,6 +54,7 @@ body.scroll-bottom .footer {
     background-color: rgba(255, 255, 255, 0.741);
     z-index: 5; /* Ensure it's above other content */
     animation: fadeOut 1s forwards; /* CSS animation */
+    pointer-events: none;
 }
 
 @keyframes fadeOut {
@@ -67,11 +68,10 @@ body.scroll-bottom .footer {
     position: fixed;
     top: 130px;
     left: 50px;
-    width: 90vw; /* Cover entire viewport width */
-    height: auto; /* Cover entire viewport height */
-    z-index: 10; /* Ensure it's on top of other content */
+    width: 90vw;
+    height: auto;
+    z-index: 10;
     transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s; /* Smooth transition */
-    
 }
 
 .navbar-container  {
@@ -84,7 +84,17 @@ body.scroll-bottom .footer {
     width: 30%; /* Adjust the width of the logo */
     height: auto; /* Allow the height to adjust proportionally */
     background-color: none;
-    z-index: 15;
+    z-index: 5;
+}
+
+#serviceRequestModal {
+    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
+    background-color: #01060f7e; /* Ensure modal background is opaque */
+}
+
+#loginModal {
+    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
+    background-color: #01060f7e; /* Ensure modal background is opaque */
 }
 
 .navbar-brand {
@@ -127,7 +137,7 @@ body.scroll-bottom .footer {
 .navbar-nav a  {
     color: #f2f1f1;
     text-shadow: #064bb1fc;
-    font-family: "Domine", serif;
+    font-family: "Protest Guerrilla", sans-serif;
 }
 
 .navbar-nav a:hover    {
@@ -139,7 +149,7 @@ body.scroll-bottom .footer {
     position: fixed;
     top: 20px;
     right: 25px;
-    z-index: 500;
+    z-index: 5000;
     font-size: 1.5rem;
     background-color: transparent;
 }
@@ -155,12 +165,10 @@ body.scroll-bottom .footer {
     right: 0;
     height: fit-content;
     width: 150px;
-    font-family: "Domine", serif;
+    font-family: "Protest Guerrilla", sans-serif;
     z-index: 500;
-    background-color: #01060f15;
-    border: 1px solid #01060f;
+    background-color: #01060fa9;
     border-radius: 10px;
-    z-index: 500;
     }
 
 .navbar-collapse  a {
@@ -241,14 +249,11 @@ body.scroll-bottom .footer {
     color: #f2f1f1;
 } */
 
-#serviceRequestModal    {
-    background-color: #01060f7e;
-}
-
 .modal-header a {
     text-decoration: none;
     font-family: "Protest Guerrilla", sans-serif;
     color: #f2f1f1;
+    font-size: 2rem;
 }
 
 .modal-header a:hover {
@@ -260,6 +265,7 @@ body.scroll-bottom .footer {
     margin: 10px auto;
     background-color: #01060f7e !important;
     border: 1px solid #01060f;
+    z-index: 1300;
 }
 
 .service-form   {
@@ -377,7 +383,7 @@ input   {
     max-height: 350px;
     overflow-y: auto;
     padding: 0;
-    margin: 0;
+    margin-top: 30px;
     text-align: left;
     scroll-behavior: smooth;
 }
@@ -487,11 +493,14 @@ footer p    {
     .logo   {
         padding: 15px;
     }
-    .navbar-brand img   {
-        width: 60%;
-        height: auto;
-        top: 15px;
-        left: 15px;
+
+    .navbar-loaded #logoImage {
+        top: 15px; /* Position the logo at the top */
+        left: 15px; /* Position the logo at the left */
+        width: 40%; /* Adjust the width of the logo */
+        height: auto; /* Allow the height to adjust proportionally */
+        background-color: none;
+        z-index: 1;
     }
 
     .navbar-toggler {
@@ -541,7 +550,7 @@ footer p    {
         width: 100%;
         top: 175px;
         right: 0;
-        z-index: 10;
+        z-index: 20;
         text-align: right;
     }
 
@@ -555,7 +564,7 @@ footer p    {
     .leistungen  {
         height: fit-content;
         width: auto;;
-        z-index: 500;
+        z-index: 50;
     }
 
     .leistungen h2 {
@@ -617,31 +626,34 @@ footer p    {
         width: auto;
     }
     
+    #leistungen {
+        margin-top: 10px;
+        margin-bottom: 75px;
+        z-index: 55;
+    }
+    
     footer  {
-        position: fixed;
+        position:fixed;
         height: 75px;
-    }
-    
-    .footer-call    {
-        margin: 5px 0;
-        width: 40%;
-    }
-    
-    footer a    {
-        text-decoration: none;
-        color: #f2f1f1;
         font-size: 1em;
     }
+
+    .line1, .line2 {
+        display: inline;
+        font-size: 1em;
+    }  
     
-    .addresse   {
-        font-size: .7em;
-        width: 50%;
-        text-align: right;
+    .line2 {
+        margin-top: .1em; /* Adjust as needed */
     }
 
     .footer-logo    {
         left: 0;
         text-align: left;
+    }
+
+    .addresse   {
+        visibility: hidden;
     }
 
 }

@@ -3,7 +3,7 @@ $(document).ready(function() {
     // Add a delay of 0.3 seconds before adding the 'navbar-loaded' class
     setTimeout(function() {
         $(".navbar-brand").addClass("navbar-loaded");
-    }, 800); // 0.3 seconds delay
+    }, 500); // 0.3 seconds delay
     
     // Hide the h1 initially
     $("#ort").hide();
@@ -33,7 +33,6 @@ $(document).ready(function() {
         } else {
             // Hide the footer if user is not at the bottom of the page
             if (window.innerWidth <= 768) {
-                // For mobile devices, adjust the condition based on your needs
                 footer.css('bottom', -footerHeight + 'px');
             }
         }
@@ -53,7 +52,6 @@ $(document).ready(function() {
     // Handling leistungen list's behavior
 
     var leistungenDiv = $("#leistungen");
-    var kontaktLi = $("#loginModalLink");
     
     // Array of leistungen
     var leistungen = ["Fassadengerüste", "Schutzgerüste", "Raumgerüste", "Fahrgerüste", "Trag - & Stützgerüste", "Passantentunnel", "Treppentürme", "Personenaufzüge", "Sonderkonstruktionen für Kirchtürme", "Fluchttreppen", "Kraftwerke"];

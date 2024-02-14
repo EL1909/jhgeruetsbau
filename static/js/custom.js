@@ -1,4 +1,9 @@
 $(document).ready(function() {
+
+    // Add a delay of 0.3 seconds before adding the 'navbar-loaded' class
+    setTimeout(function() {
+        $(".navbar-brand").addClass("navbar-loaded");
+    }, 800); // 0.3 seconds delay
     
     // Hide the h1 initially
     $("#ort").hide();

@@ -45,32 +45,60 @@ body.scroll-bottom .footer {
     display: flex;
 }
 
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.741);
+    z-index: 5; /* Ensure it's above other content */
+    animation: fadeOut 1s forwards; /* CSS animation */
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
 /* Top Banner*/
+
+#logoImage  {
+    position: fixed;
+    top: 130px;
+    left: 50px;
+    width: 90vw; /* Cover entire viewport width */
+    height: auto; /* Cover entire viewport height */
+    z-index: 10; /* Ensure it's on top of other content */
+    transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s; /* Smooth transition */
+    
+}
 
 .navbar-container  {
     position: fixed;
 }
 
-.navbar-brand   {
-    top: 5px;
-    left: 15px;
-    background-color: none; /* Background color */
-    width: 100%;
-    height: auto;
-    z-index: 50;
+.navbar-loaded #logoImage {
+    top: 15px; /* Position the logo at the top */
+    left: 15px; /* Position the logo at the left */
+    width: 30%; /* Adjust the width of the logo */
+    height: auto; /* Allow the height to adjust proportionally */
+    background-color: none;
+    z-index: 15;
+}
+
+.navbar-brand {
+    position: absolute; /* Position relative to the header */
+    z-index: 1500; /* Ensure it's above other elements */
 }
 
 .navbar-brand img   {
-    width: 30%;
+    width: 50%;
     height: auto;
 }
 
 .logo   {
-    height: 100px;
-    text-align: left;
     padding: 15px;
-    font-family: "Domine", serif;
-    font-style: italic;
 }
 
 .navbar  {
@@ -100,7 +128,6 @@ body.scroll-bottom .footer {
     color: #f2f1f1;
     text-shadow: #064bb1fc;
     font-family: "Domine", serif;
-    font-style: italic;
 }
 
 .navbar-nav a:hover    {
@@ -109,7 +136,7 @@ body.scroll-bottom .footer {
 }
 
 .navbar-toggler {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 25px;
     z-index: 500;
@@ -129,7 +156,6 @@ body.scroll-bottom .footer {
     height: fit-content;
     width: 150px;
     font-family: "Domine", serif;
-    font-style: italic;
     z-index: 500;
     background-color: #01060f15;
     border: 1px solid #01060f;
@@ -222,7 +248,6 @@ body.scroll-bottom .footer {
 .modal-header a {
     text-decoration: none;
     font-family: "Protest Guerrilla", sans-serif;
-    font-style: italic;
     color: #f2f1f1;
 }
 
@@ -252,14 +277,15 @@ input   {
     border: none;
     border-bottom: 1px solid #eb7506;
     width: 100%;
-    color: #eb7506;
+    color: #f2f1f1;
     text-align: right;
+    font-family: "Domine", serif;
+    font-weight: 600;
 }
 
 .form-button {
     background-color: #eb7506;
     font-family: "Protest Guerrilla", sans-serif;
-    font-style: italic;
     font-size: 1.5em;
     font-weight: bolder;
     color: #f2f1f1;

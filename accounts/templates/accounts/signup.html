@@ -1,5 +1,4 @@
-<h2>Konto Erstellen</h2>
-<form method="post" action="{% url 'account_signup' %}" tags="entrance,login">
+<form method="post" id="signupForm" action="{% url 'account_signup' %}" tags="entrance,login">
     {% csrf_token %}
     <div class="service-form">
         <div class="form-group">
@@ -21,6 +20,3 @@
       </div>
       <button class="form-button" type="submit" tags="prominent,login">Konto Erstellen</button>
 </form>
-{% for error in form.errors %}
-    <div class="error">{{ error }}</div>
-{% endfor %}

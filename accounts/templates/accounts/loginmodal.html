@@ -16,6 +16,11 @@
             </div>
             <div class="modal-body">
                 <div class="tab-content">
+                    <!-- Display form errors -->
+                    <div class="" id="modalError">
+                        <!-- Display the error message here -->
+                        ERROR
+                    </div>                   
                     <div class="tab-pane fade show active" id="loginContent" role="tabpanel" aria-labelledby="login-tab">
                         {% include 'accounts/login.html' %}
                     </div>
@@ -27,3 +32,89 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    // Signup Form error handling
+    $('#signupForm').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.success) {
+                    // Display success message in modal
+                    $('#modalError')
+                        .text('Account created successfully!')
+                        .css('background-color', '#09a70e7a' )
+                        .show(); // Show the modal error
+                    setTimeout(function() {
+                        window.location.href = '/'; // Hide the modal after 2 seconds
+                    }, 2000); // 2000 milliseconds = 2 seconds
+                } else if (response.errors) {
+                    // Display errors in modal
+                    var errors = '<ul>';
+                    $.each(response.errors, function(field, errors) {
+                        $.each(errors, function(index, error) {
+                            errors += '<li>' + error + '</li>';
+                        });
+                    });
+                    errors += '</ul>';
+                    $('#modalError').html(errors);
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#modalError')
+                    .html('<strong>Error:</strong>' + xhr.responseText)
+                    .css('background-color', '#a7092b7a')
+                    .show();
+                console.error(xhr.responseText);
+            }
+        });
+    });
+
+    // Login Form error handling
+    $('#loginForm').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.success) {
+                    // Redirect to home page if login successful
+                    $('#modalError')
+                        .text('{user} Logged in successfully!')
+                        .css('background-color', '#09a70e7a' )
+                        .show(); // Show the modal error
+                    setTimeout(function() {
+                        window.location.href = '/'; // Hide the modal after 2 seconds
+                    }, 2000); // 2000 milliseconds = 2 seconds
+                    window.location.href = '/';
+                } else if (response.errors) {
+                    // Display errors in modal
+                    var errors = '<ul>';
+                    $.each(response.errors, function(field, errorList) {
+                        $.each(errorList, function(index, error) {
+                            errors += '<li>' + error + '</li>';
+                        });
+                    });
+                    errors += '</ul>';
+                    $('#modalError').html(errors)
+                    .css('background-color', '#a7092b7a')
+                    .show(); // Show the modal error
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#modalError')
+                    .html('<strong>Error:</strong>' + xhr.responseText)
+                    .css('background-color', '#a7092b7a')
+                    .show();
+                console.error(xhr.responseText);
+            }
+        });
+    });
+});
+</script>

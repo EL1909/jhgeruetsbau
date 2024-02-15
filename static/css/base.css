@@ -94,7 +94,16 @@ body.scroll-bottom .footer {
 
 #loginModal {
     z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
-    background-color: #01060f7e; /* Ensure modal background is opaque */
+    background-color: #05010f7e; /* Ensure modal background is opaque */
+}
+
+#modalError {
+    display: none; /* Hide the modal error by default */
+    color: #f2f1f1;
+    min-height: 30px;
+    padding: 15px;
+    margin: 4px;
+
 }
 
 .navbar-brand {

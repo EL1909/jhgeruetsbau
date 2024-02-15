@@ -5,8 +5,7 @@
 /* General*/
 
 html    {
-    min-height: 100vh;
-    
+    min-height: 100vh;   
 }
 
 body {
@@ -43,6 +42,22 @@ body.scroll-bottom .footer {
 .content {
     padding: 1rem;
     display: flex;
+    flex-direction: column;
+}
+
+#first-content {
+    padding: 1rem;
+    height: 100vh;
+    display: block;
+    z-index: 2;
+}
+
+#second-content {
+    margin-top: 100vh;
+    display: block;
+    padding: 1rem;
+    height: 80vh;
+    z-index: 1;
 }
 
 #background {
@@ -51,7 +66,7 @@ body.scroll-bottom .footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.741);
+    background-color: rgba(236, 237, 243, 0.698);
     z-index: 5; /* Ensure it's above other content */
     animation: fadeOut 1s forwards; /* CSS animation */
     pointer-events: none;
@@ -85,25 +100,6 @@ body.scroll-bottom .footer {
     height: auto; /* Allow the height to adjust proportionally */
     background-color: none;
     z-index: 5;
-}
-
-#serviceRequestModal {
-    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
-    background-color: #01060f7e; /* Ensure modal background is opaque */
-}
-
-#loginModal {
-    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
-    background-color: #05010f7e; /* Ensure modal background is opaque */
-}
-
-#modalError {
-    display: none; /* Hide the modal error by default */
-    color: #f2f1f1;
-    min-height: 30px;
-    padding: 15px;
-    margin: 4px;
-
 }
 
 .navbar-brand {
@@ -172,8 +168,8 @@ body.scroll-bottom .footer {
     position: fixed;
     top: 50px;
     right: 0;
-    height: fit-content;
-    width: 150px;
+    height: auto;
+    width: fit-content;
     font-family: "Protest Guerrilla", sans-serif;
     z-index: 500;
     background-color: #01060fa9;
@@ -185,7 +181,7 @@ body.scroll-bottom .footer {
     padding: 5px;
     }
 
-/* home */
+/* Home */
 
 #ort    {
     position: absolute;
@@ -222,41 +218,26 @@ body.scroll-bottom .footer {
     scroll-behavior: smooth;
 } */
 
-#first-content {
-    height: 100vh;
-}
-
-#second-content {
-    position: sticky;
-    top: 100px;
-    height: 80vh;
-}
-
 /* Modal Service & Form */
 
-/* .request-button {
-    background-color: #064bb1fc;
-    border: 2px solid #eb7506;
-    border-radius: 5px;
-    margin: 40px 10px;
-    padding: 5px 25px;
-    height: 50px;
-    z-index: 300;
+#serviceRequestModal {
+    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
+    background-color: #01060f7e; /* Ensure modal background is opaque */
 }
 
-.request-button:hover {
-    background-color: #eb7506;
-    color: #f2f1f1;
-    border: 2px solid #064bb1fc;
-    border-radius: 5px;
-    margin: 40px 10px;
-    padding: 5px 25px;
-    height: 50px;
+#loginModal {
+    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
+    background-color: #05010f7e; /* Ensure modal background is opaque */
 }
 
-.service-request  h2:hover {
+#modalError {
+    display: none; /* Hide the modal error by default */
     color: #f2f1f1;
-} */
+    min-height: 30px;
+    padding: 15px;
+    margin: 4px;
+
+}
 
 .modal-header a {
     text-decoration: none;
@@ -331,25 +312,11 @@ input   {
     color: #f2f1f1;
 }
 
-/* .scroll-down-indicator  {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #f2f1f1;
-    z-index: 1000;
-
-}
-
-.scroll-down-indicator i    {
-    font-size: 1.5em;
-} */
-
 /* Leistungen */
 
 .leistungen  {
     position: relative;
-    height: 65vh;
+    height: 60vh;
     width: auto;
     background-color: #01060fa9;
     border: 1px solid #01060f;
@@ -357,10 +324,8 @@ input   {
     color: #f2f1f1;
     font-family: "Protest Guerrilla", sans-serif;
     box-sizing: border-box;
-    display: flex;
-    align-items:start;
-    justify-content: center;
-    z-index: 450;
+    display: block;
+    z-index: 50;
     margin-bottom: 25px;
 }
 
@@ -387,7 +352,6 @@ input   {
     font-weight: bold;
 }
 
-
 #leistungen    {
     max-height: 350px;
     overflow-y: auto;
@@ -397,44 +361,52 @@ input   {
     scroll-behavior: smooth;
 }
 
-.service-request  .icon {
-    font-size: 8em;
-    margin: 25px;
-    color: #eb7506;
-}
+/* Termine Section */
 
-.service-request  .icon:hover {
-    color: #064bb1fc;
-}
-
-.service-request  h5 {
-    background-color: #064bb1fc;
-    color: #f2f1f1;
-    border-radius: 50px;
-    width: 300px;
-    height: 25px;
-    text-align: center;
-    font-family: "Protest Guerrilla", sans-serif;
-    font-style: italic;
-    font-weight: bolder;
+#termine    {
+    margin-top:150px;
 }
 
 .termin-list   {
     text-align: left;
     list-style-type:none;
     margin: 1px;
+    max-height: 300px;
     width: fit-content;
     padding: 15px 0;
+    z-index: 25;
+    font-family: "Domine", serif;
+    overflow-y: auto;
 }
 
 .termin-list li:hover   {
-    background-color: #eb7506;
+    background-color: #eb7506ac;
+    color: #f2f1f1;
+    height: auto;
+    z-index: 20;
+}
+
+#selected-termin    {
+    margin-top: 25px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+#selected-termin p  {
+    margin-top: 0;
+    font-weight: 700;
+    
+}
+
+#selected-termin small  {
+    margin-top: 5px;
+    color: #eb7506;
 }
 
 /* Footer   */
 
 footer  {
-    position: relative;
+    position: fixed;
     bottom: -100px;
     background-color: #01060fa9;
     border: 1px solid #01060f;
@@ -638,6 +610,12 @@ footer p    {
     #leistungen {
         margin-top: 10px;
         margin-bottom: 75px;
+        z-index: 55;
+    }
+
+    #selected-termin    {
+        margin-top: 10px;
+        margin-bottom: 100px;
         z-index: 55;
     }
     

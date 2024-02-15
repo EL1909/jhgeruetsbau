@@ -88,3 +88,54 @@ Make sure your users are authenticated before allowing them to send or retrieve 
 Security:
 Implement proper security measures, such as input validation, authentication checks, and secure communication (use HTTPS).
 This is a simplified guide, and the actual implementation may vary based on your specific tech stack and requirements. Ensure that your application complies with best practices and security standards.
+
+
+HUNDEGGER
+
+
+## 07.02.24
+
+Desired domain:
+WWW.GERUESTBAU-HUNDEGGER.DE
+
+users
+
+efrain19091@gmailcom
+admin
+123455
+
+hundegger.geruestbau@t-online.de
+jhundegger
+Josep0102
+
+luciano@jh.de
+Luciano
+Gerustbau1909
+
+
+- FONTS -
+
+    font-family: "Protest Guerrilla", sans-serif;
+
+    font-family: "Domine", serif;
+
+- COLORS -
+background-color: #01060f7e;
+color: #f2f1f1;
+
+
+## 15.02.24
+"Account functionallties and alerts working as expected from modal"
+
+Need to:
+
+ - Verify if the form needs to be passed to the context in signupView
+ - add is_approved field to allow who can see termins module
+ - review all alerts and messages and set them to be translated
+ - Add captcha to request service
+ - Assure Footer shows in termin page
+ - Include Notes for termines
+ - Allow select Besucher in termin
+ - Divide termin into OPEN | ACTIVE | COMPLETED
+ - Hide logo as scroll up o Mobile
+ - 

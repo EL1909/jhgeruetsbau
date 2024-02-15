@@ -1,44 +1,14 @@
 $(document).ready(function() {
-
-    // Add a delay of 0.3 seconds before adding the 'navbar-loaded' class
+    // Add a delay of 0.6 seconds before adding the 'navbar-loaded' class
     setTimeout(function() {
         $(".navbar-brand").addClass("navbar-loaded");
-    }, 500); // 0.3 seconds delay
-    
+    }, 600);
+
     // Hide the h1 initially
-    $("#ort").hide();
+    $("#ort, #termine").hide();
 
-    // Auto-Hide Expanded Menu
-    const navbarContainer = $('.navbar-collapse');
-
-    navbarContainer.on('mouseleave', function() {
-        // Hide the navbar when the user leaves its container
-        navbarContainer.removeClass('show');
-    });
-
-    // Fade in the h1 with a duration of 1000 milliseconds (adjust as needed)
-    $("#ort").fadeIn(2500);
-
-    let footer = $('footer');
-    let footerHeight = footer.outerHeight();
-    let lastScrollTop = 0;
-
-    // Show/hide footer as the user scrolls
-    $(window).scroll(function() {
-        var scrolledHeight = $(document).height() - $(window).height() - $(window).scrollTop();
-        var st = $(this).scrollTop();
-    
-        if (scrolledHeight == 0) {
-            footer.css('bottom', '0');
-        } else {
-            // Hide the footer if user is not at the bottom of the page
-            if (window.innerWidth <= 768) {
-                footer.css('bottom', -footerHeight + 'px');
-            }
-        }
-    
-        lastScrollTop = st;
-    });
+    // Fade in the h1 "Gerústbau im Alpenvorland"
+    $("#ort, #termine").fadeIn(1500);
 
     // Leistungen show as tab is clicked behavior
     $('#leistungen-tab').click(function() {
@@ -48,43 +18,82 @@ $(document).ready(function() {
         }, 500); // Adjust the duration of the animation as needed (in milliseconds)
     });
 
-
     // Handling leistungen list's behavior
-
     var leistungenDiv = $("#leistungen");
-    
-    // Array of leistungen
     var leistungen = ["Fassadengerüste", "Schutzgerüste", "Raumgerüste", "Fahrgerüste", "Trag - & Stützgerüste", "Passantentunnel", "Treppentürme", "Personenaufzüge", "Sonderkonstruktionen für Kirchtürme", "Fluchttreppen", "Kraftwerke"];
-
-    // Create a <ul> element
     var ul = $("<ul>");
-
-    // Iterate through the leistungen array
     leistungen.forEach(function(leistung, index) {
-        // Create a <li> element for each leistung
         var li = $("<li>");
-        // Create a <span> for the Font Awesome icon
         var icon = $("<span>").addClass("fas fa-wrench");
-        // Append the icon and text to the <li>
-        li.append(icon).append("  " + leistung); // Adjust spacing if needed
-        // Append the <li> element to the <ul>
+        li.append(icon).append("  " + leistung);
         ul.append(li);
+        li.hide().delay(500 * index).fadeIn(800);
+    });
+    leistungenDiv.append(ul).fadeIn(3000);
 
-        // Delay each li's fadeIn based on its index
-        li.hide().delay(500 * index).fadeIn(800); // Adjust delay and fadeIn speed as needed
+    // Auto-Hide Expanded Menu
+    const navbarContainer = $('.navbar-collapse');
+    navbarContainer.on('mouseleave', function() {
+        // Hide the navbar when the user leaves its container
+        navbarContainer.removeClass('show');
+    });
+
+    // Listen for clicks on termin items
+    $('.termin-item').click(function() {
+        // Get data from clicked termin item
+        var terminId = $(this).data('termin-id');
+        var contactPerson = $(this).data('contact-person');
+        var phone = $(this).data('phone');
+        var email = $(this).data('email');
+        var visitDate = $(this).data('visit-date');
+        var rentTimeframe = $(this).data('rent-timeframe');
+        var address = $(this).data('address');
+        var zipcode = $(this).data('zipcode');
+        var city = $(this).data('city');
+        var notes = $(this).data('notes');
+        var user = $(this).data('user');
         
+        // Update content of selected-termin elements
+        $('#contact_person p').text(contactPerson);
+        $('#phone p').text(phone);
+        $('#email p').text(email);
+        $('#visit_date p').text(visitDate);
+        $('#rent_timeframe p').text(rentTimeframe + " Wochen");
+        $('#address p').text(address);
+        $('#zipcode p').text(zipcode);
+        $('#city p').text(city);
+        $('#notes p').text(notes);
+        $('#user p').text(user);
+    });
+    
+        // Listen for clicks on phone number
+        $('#phone').click(function() {
+        // Get the phone number text
+        var phoneNumber = $(this).text().trim();
+        // Use tel protocol to initiate the call
+        window.location.href = 'tel:' + phoneNumber;
     });
 
-    // Append the <ul> to the ortlist div and fadeIn
-    leistungenDiv.append(ul).fadeIn(3000); // Adjust the fadeIn speed if needed
+});
 
-    // Function to close navbar when clicking outside of it
-    $(document).click(function(event) {
-        var navbarNav = $(".navbar-nav");
-        // Check if the clicked element is not within the navbar-nav
-        if (!navbarNav.is(event.target) && navbarNav.has(event.target).length === 0) {
-            // Close the navbar by removing the 'show' class
-            navbarNav.removeClass("show");
+// Footer Behavior
+let footer = $('footer');
+let footerHeight = footer.outerHeight();
+let lastScrollTop = 0;
+
+// Show/hide footer as the user scrolls
+$(window).scroll(function() {
+    var scrolledHeight = $(document).height() - $(window).height() - $(window).scrollTop();
+    var st = $(this).scrollTop();
+
+    if (st > lastScrollTop) {
+        // Scrolling down
+        footer.css('bottom', '0');
+    } else {
+        // Scrolling up
+        if (scrolledHeight > 0 && window.innerWidth <= 768) {
+            footer.css('bottom', -footerHeight + 'px');
         }
-    });
+    }
+    lastScrollTop = st;
 });

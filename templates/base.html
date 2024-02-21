@@ -51,7 +51,7 @@
                             <a class="nav-link" id="modalLink" aria-current="page" href="#">Kontakt</a>
                         </li>
                         <li class="nav-item">
-                            <a id="leistungen-tab" class="nav-link"">Leistungen</a>
+                            <a id="leistungen-tab" class="nav-link">Leistungen</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="loginModalLink" href="#">Anmelden</a>
@@ -83,7 +83,7 @@
               </a>
             </div>
             <div class="line2">
-              <a href="mailto:hundegger.geruestbau@t-online.de?subject=Message%20from%20website"">
+              <a href="mailto:hundegger.geruestbau@t-online.de?subject=Message%20from%20website">
                 hundegger.geruestbau@t-online.de
             </a>
             
@@ -104,7 +104,23 @@
     <script src="{% static 'js/custom.js' %}"></script>
     <script src="{% static 'js/modal.js' %}"></script>
     {% endif %}
-    <!-- fontawesome -->
+    <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/5c47144494.js" crossorigin="anonymous"></script>
 </body>
 </html>
+<!-- <script>
+  // Change background image to bode::after based on background_image context processor
+
+  function changeBackground() {
+      var images = {{ background_images|safe }}; // Update with your image filenames
+      var randomIndex = Math.floor(Math.random() * images.length);
+      var imageUrl = "/media/site/background/" + images[randomIndex]; // Update path to your images
+      document.body.style.setProperty('--background-image', "url('" + imageUrl + "')"); // Corrected line
+  }
+
+  // Call the function initially
+  changeBackground();
+
+  // Call the function every 5 seconds (5000 milliseconds)
+  setInterval(changeBackground, 5000);
+</script> -->

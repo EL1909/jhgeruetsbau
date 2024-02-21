@@ -1,9 +1,11 @@
 from django import forms
-from django.forms import inlineformset_factory
-from .models import Termin, Note
+from django_recaptcha.fields import ReCaptchaField
+from .models import Termin
 
 
-class TerminForm(forms.ModelForm):
+class terminForm(forms.ModelForm):
+    # captcha = ReCaptchaField()
+
     class Meta:
         model = Termin
         fields = '__all__'

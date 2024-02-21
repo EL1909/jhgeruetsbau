@@ -14,6 +14,7 @@ import os
 from decouple import config
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_recaptcha',
     'home',
     'termine',
 ]
@@ -73,7 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-        'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages',
+                'home.context_processors.background_images',
             ],
         },
     },
@@ -160,3 +163,10 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Google reCaptcha Credentials
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = config('RECAPTCHA_PRIVATE_KEY')
+
+
+TEST_VALUE= config('TEST_VALUE')

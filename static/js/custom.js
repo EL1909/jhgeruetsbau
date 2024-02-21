@@ -38,6 +38,29 @@ $(document).ready(function() {
         navbarContainer.removeClass('show');
     });
 
+    // Listen for clicks on phone number
+    $('#phone').click(function() {
+    // Get the phone number text
+    var phoneNumber = $(this).text().trim();
+    // Use tel protocol to initiate the call
+    window.location.href = 'tel:' + phoneNumber;
+    });
+
+    // Initially hide closed termins
+    $(".taken-list").hide();
+
+    // Event listener for clicking on the open tab
+    $("#open-tab").click(function() {
+    $(".termin-list").show();
+    $(".taken-list").hide();
+    });
+
+    // Event listener for clicking on the closed tab
+    $("#closed-tab").click(function() {
+    $(".taken-list").show();
+    $(".termin-list").hide();
+    });
+    
     // Listen for clicks on termin items
     $('.termin-item').click(function() {
         // Get data from clicked termin item
@@ -52,6 +75,8 @@ $(document).ready(function() {
         var city = $(this).data('city');
         var notes = $(this).data('notes');
         var user = $(this).data('user');
+        var isTaken = $(this).data('is_taken') === true;
+
         
         // Update content of selected-termin elements
         $('#contact_person p').text(contactPerson);
@@ -64,16 +89,51 @@ $(document).ready(function() {
         $('#city p').text(city);
         $('#notes p').text(notes);
         $('#user p').text(user);
-    });
-    
-        // Listen for clicks on phone number
-        $('#phone').click(function() {
-        // Get the phone number text
-        var phoneNumber = $(this).text().trim();
-        // Use tel protocol to initiate the call
-        window.location.href = 'tel:' + phoneNumber;
+        $('#terminId p').text(terminId);
+
+        // Set the checked attribute of the is_taken switch based on the is_taken value
+        $('#is_taken_switch').prop('checked', isTaken);
+
+        // // Add event listeners to the switches
+        // $("#is_taken_switch").updateStatus(terminId, 'is_taken', isTaken);
     });
 
+    // Add event listener for the "Apply" button
+    $("#applyButton").click(function() {
+        // Get the selected termin ID
+        var terminId = $("#terminId p").text().trim();
+        
+        // Get the value of is_taken checkbox
+        var isTaken = $("#is_taken_switch").prop("checked");
+        
+        // Get the selected user ID
+        var userId = $("#userSelect").val();
+
+        // Get CSRF token value
+        var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    
+        
+        // Send AJAX request to update the termin
+        $.ajax({
+            url: "/termine/update_termin/" + terminId + "/",
+            type: "POST",
+            dataType: "json",
+            data: {
+                csrfmiddlewaretoken: csrfToken, // Include CSRF token
+                is_taken: isTaken,
+                user: userId
+            },
+            success: function(response) {
+                console.log("Termin updated successfully from js:", response.message);
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error("Error updating termin:", error);
+                // Handle errors appropriately
+            }
+        });
+    });
+    
 });
 
 // Footer Behavior

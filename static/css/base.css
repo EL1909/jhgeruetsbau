@@ -23,8 +23,10 @@ body::before {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-image: url('/media/site/jh1.jpeg'); /* Background image */
     background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    background-image: var(--background-image);
     z-index: 0;
 }
 
@@ -335,7 +337,6 @@ input   {
 }
 
 .leistungen ul {
-    margin-top: 25px;
     list-style: none;
     padding: 20px 25px;
     font-size: 1rem;
@@ -367,6 +368,23 @@ input   {
     margin-top:150px;
 }
 
+.termine-tab {
+    margin: none;
+    height: 30px;
+    text-align: right;
+}
+
+.termine-tab:hover {
+    margin: none;
+    background-color: #eb7506;
+    border-radius: 15px 0;
+    min-width: max-content;
+}
+
+.termine-tab .active    {
+    border-bottom: 2px underline #eb7506;
+}
+
 .termin-list   {
     text-align: left;
     list-style-type:none;
@@ -387,7 +405,7 @@ input   {
 }
 
 #selected-termin    {
-    margin-top: 25px;
+    margin-top: 75px;
     max-height: 350px;
     overflow-y: auto;
 }
@@ -401,6 +419,10 @@ input   {
 #selected-termin small  {
     margin-top: 5px;
     color: #eb7506;
+}
+
+#applyButton    {
+    text-align: right;
 }
 
 /* Footer   */

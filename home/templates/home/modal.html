@@ -52,7 +52,8 @@
                       <input type="text" id="notes" name="notes" required>
                     </div>
                     <div class="col-12">
-                        <button class="form-button" type="submit">Besuch anfordern</button>
+                      <div class="g-recaptcha" data-sitekey="{{ RECAPTCHA_PUBLIC_KEY }}"></div>
+                      <button class="form-button" type="submit">Besuch anfordern</button>
                     </div>
                 </div>
             </div>
@@ -61,18 +62,5 @@
       </div>
     </div>
   </div>
-  <!-- Timeframe selection -->
-<script>
-  function updatePlaceholder(input) {
-      // Get the user input value
-      const userInput = input.value;
 
-      // Update the placeholder based on user input
-      if (userInput.trim() !== "") {
-          input.placeholder = `${userInput} Wochen`;
-      } else {
-          input.placeholder = "Wie viele Wochen?";
-      }
-  }
-</script>
 

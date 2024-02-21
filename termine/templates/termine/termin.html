@@ -4,8 +4,10 @@
 {% block content %}
 <div class="leistungen row" id="termine">
   <div class="col-12 col-md-4">
-      <div class="col-12 p-4">
-          <h2>Termine</h2>
+      <div class="row p-4  terminTitle">
+          <div class="col-5"><h2>Termine</h2></div>
+          <div class="col-3 termine-tab active" id="open-tab" >Offen</div>
+          <div class="col-4 termine-tab" id="closed-tab">Geschlossen</div>
       </div>
       <div class="col-12">
         <ul class="termin-list">
@@ -19,8 +21,10 @@
               data-address="{{ termin.address }}" 
               data-zipcode="{{ termin.zipcode }}" 
               data-city="{{ termin.city }}" 
-              data-notes="{{ termin.notes }}" 
-              data-user="{{ termin.user }}" 
+              data-notes="{{ termin.notes }}"
+              data-user="{{ termin.user }}"
+              data-is_taken="{{ termin.is_taken }}"
+              data-taken_date="{{ termin.taken_date }}" 
               class="termin-item">
             {{ termin.contact_person }} - {{ termin.visit_date|date:"d/m" }}
             {{ termin.city}}
@@ -28,6 +32,28 @@
           </li>
         {% endfor %}
         </ul>
+        <ul class="taken-list">
+            {% for taken in takens %}
+            <li data-termin-id="{{ termin.id }}" 
+                data-contact-person="{{ termin.contact_person }}" 
+                data-phone="{{ termin.phone }}" 
+                data-email="{{ termin.email }}" 
+                data-visit-date="{{ termin.visit_date }}" 
+                data-rent-timeframe="{{ termin.rent_timeframe }}" 
+                data-address="{{ termin.address }}" 
+                data-zipcode="{{ termin.zipcode }}" 
+                data-city="{{ termin.city }}" 
+                data-notes="{{ termin.notes }}"
+                data-user="{{ termin.user }}"
+                data-is_taken="{{ termin.is_taken }}"
+                data-taken_date="{{ termin.taken_date }}" 
+                class="termin-item">
+              {{ taken.contact_person }} - {{ taken.visit_date|date:"d/m" }}
+              {{ taken.city}}
+              <hr>
+            </li>
+          {% endfor %}
+          </ul>
       </div>
   </div>
   <hr class="d-md-none hr-mobile">
@@ -45,34 +71,59 @@
           <small>Email</small>
           <p></p>
       </div>
-      <div class="col-6 form-termin" id="visit_date">
-          <small>Termin Datum</small>
-          <p></p>
-      </div>
-      <div class="col-6 form-termin" id="rent_timeframe">
-          <small>Mietdaeur</small>
-          <p></p>
-      </div>
-      <div class="col-12 col md-4 form-termin" id="address">
+      <div class="col-4 col md-4 form-termin" id="address">
           <small>Addresse</small>
           <p></p>
       </div>
-      <div class="col-6 col-md-4 form-termin" id="zipcode">
+      <div class="col-4 col-md-4 form-termin" id="zipcode">
           <small>PostleitZahl</small>
           <p></p>
       </div>
-      <div class="col-6 col-md-4 form-termin" id="city">
+      <div class="col-4 col-md-4 form-termin" id="city">
           <small>Stadt</small>
           <p></p>
       </div>
-      <div class="col-12 form-termin" id="user">
-        <small>Besucher</small>
+      <div class="col-4 form-termin" id="visit_date">
+        <small>Termin Datum</small>
         <p></p>
-      </div>
-      <div class="col-12 form-termin" id="notes">
-          <small>Kommentär</small>
-          <p></p>
-      </div>
+    </div>
+    <div class="col-4 form-termin" id="rent_timeframe">
+        <small>Mietdaeur</small>
+        <p></p>
+    </div>
+    <div class="col-4 form-termin" id="rent_is_taken">
+        <div class="row">
+            <div class="col-6 form-termin" id="terminId">
+                <small>Termin Id</small>
+                <p></p>
+            </div>
+            <div class="col-6 form-switch">
+            <input type="checkbox" class="form-check-input" id="is_taken_switch">
+            <label class="form-check-label" for="is_taken_switch"><small>Geschlossen</small></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <select id="userSelect">
+                    {% for user in users %}
+                        {% if termin.user == user.username %}
+                            <option value="{{ user.username }}" selected>{{ user.username }}</option>
+                        {% else %}
+                            <option value="{{ user.username }}">{{ user.username }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-6">
+                <button id="applyButton"">Beigeben</button>
+            </div>
+        </div>  
+    </div>
+    <div class="col-12 form-termin" id="notes">
+        <small>Kommentär</small>
+        <p></p>
+    </div>
   </div>
 </div>
+<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 {% endblock %}

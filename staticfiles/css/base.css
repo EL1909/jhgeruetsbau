@@ -1,155 +1,267 @@
 /* CSS Rules for JH Geruestbau */
 
-/* Google Fonts Noto Sans and Raleway*/
+/* Google Fonts Protest Guerrilla and Domine*/
 
 /* General*/
 
-body    {
-    min-height: 100vh;
+html    {
+    min-height: 100vh;   
+}
+
+body {
+    height: 100%;
     margin: 0;
-    background: linear-gradient(to right, 
-    #064bb1fc 25%, /* Deep blue */
-    #eb7506 25%, /* Orange */
-    #eb7506 25.5%, /* Orange continues for the 5% segment */
-    #f2f1f1 25.5% /* Rest of the background color */);
+    position: relative;
+    z-index: 1;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    background-image: var(--background-image);
+    z-index: 0;
+}
+
+body.scroll-bottom .footer {
+    bottom: 0;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#first-content {
+    padding: 1rem;
+    height: 100vh;
+    display: block;
+    z-index: 2;
+}
+
+#second-content {
+    margin-top: 100vh;
+    display: block;
+    padding: 1rem;
+    height: 80vh;
+    z-index: 1;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(236, 237, 243, 0.698);
+    z-index: 5; /* Ensure it's above other content */
+    animation: fadeOut 1s forwards; /* CSS animation */
+    pointer-events: none;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 /* Top Banner*/
 
-.call {
-    display: inline-block;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    padding: 40px 10px;
-    background-color: none; /* Background color */
-    width: 25%;
-    margin: 0;
+#logoImage  {
+    position: fixed;
+    top: 130px;
+    left: 50px;
+    width: 90vw;
+    height: auto;
+    z-index: 10;
+    transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s; /* Smooth transition */
 }
 
-.call a {
-    text-decoration: none;
-    color: #f2f1f1;
-    font-weight: bold;
-    width: fit-content;
+.navbar-container  {
+    position: fixed;
 }
 
-.call:hover {
-    background-color: #eb7506; /* Background color on hover */
+.navbar-loaded #logoImage {
+    top: 15px; /* Position the logo at the top */
+    left: 15px; /* Position the logo at the left */
+    width: 30%; /* Adjust the width of the logo */
+    height: auto; /* Allow the height to adjust proportionally */
+    background-color: none;
+    z-index: 5;
 }
 
+.navbar-brand {
+    position: absolute; /* Position relative to the header */
+    z-index: 1500; /* Ensure it's above other elements */
+}
+
+.navbar-brand img   {
+    width: 50%;
+    height: auto;
+}
 
 .logo   {
-    height: 100px;
-    text-align: center;
     padding: 15px;
-    font-family: 'Noto Sans', sans-serif;
-    font-style: italic;
-}
-
-.logo a    {
-    font-size: 30px;
 }
 
 .navbar  {
-    height: 50px;
-    background: linear-gradient(to right, 
-    #064bb1fc 25%, /* Deep blue */
-    #eb7506 25%, /* Orange */
-    #eb7506 25.5%, /* Orange continues for the 5% segment */
-    #f2f1f1 25.5% /* Rest of the background color */);
-    font-family: 'Raleway', sans-serif;
-    display: flex;
-    justify-content: space-between;
+    font-family: "Domine", serif;
     position: relative;
-}
-
-.navbar::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 25%; /* Starting point at 25% */
-    width: 75%; /* Extending to the right (100% - 25%) */
-    height: 4px; /* Adjust the height of the line */
-    background-color: #eb7506; /* Adjust the color of the line */
+    border: none;
+    background: none;
+    z-index: 99;
 }
 
 .navbar-nav {
     margin: auto;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
     margin-right: 0;
+    z-index: 300;
 }
 
-.navbar li{
+.navbar-nav li {
     list-style: none;
     margin: 0 10px;
     padding: none;
 }
 
+.navbar-nav a  {
+    color: #f2f1f1;
+    text-shadow: #064bb1fc;
+    font-family: "Protest Guerrilla", sans-serif;
+}
+
 .navbar-nav a:hover    {
     font-weight:1.2rem;
-    color: #064bb1fc;
+    color: #eb7506;
 }
 
-/* Left panel */
+.navbar-toggler {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    z-index: 5000;
+    font-size: 1.5rem;
+    background-color: transparent;
+}
+
+.navbar-toggler i {
+    font-size: 1.5rem;
+}
+
+/* Adjust hamburger menu expanded */
+.navbar-collapse    {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    height: auto;
+    width: fit-content;
+    font-family: "Protest Guerrilla", sans-serif;
+    z-index: 500;
+    background-color: #01060fa9;
+    border-radius: 10px;
+    }
+
+.navbar-collapse  a {
+    text-decoration:none;
+    padding: 5px;
+    }
+
+/* Home */
 
 #ort    {
-    margin: 20px 0;
+    position: absolute;
+    top: 375px;
+    right: 15px;
     color: #f2f1f1;
-    font-family: 'Noto Sans', sans-serif;
-    font-style: italic;
-    width: 25%;
+    font-family:"Protest Guerrilla", sans-serif;
+    width: 350px;
+    height: 125px;
     box-sizing: border-box;
-    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #01060fa9;
+    border: 1px solid #01060f;
+    border-radius: 10px;
+    z-index: 100;
 }
 
-#ort h4 {
+#ort h1 {
     text-align: right;
-    margin-right: 25px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 120;
+    
 }
 
-#ortlist    {
-    max-height: 450px;
-    overflow: scroll;
-    padding: 0 5px;
+/* #ortlist    {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    scroll-behavior: smooth;
+} */
+
+/* Modal Service & Form */
+
+#serviceRequestModal {
+    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
+    background-color: #01060f7e; /* Ensure modal background is opaque */
 }
 
-/* Service Form */
-
-#service-request    {
-    background-image: url('/media/site/andamio-2-01.png');
-    background-position: cover;
-    width: 75%;
-    text-align: right;
-    padding: 25px;
-    box-sizing: border-box; /* Include padding in width/height calculations */
-    margin: 0 auto;
-    font-family: 'Raleway', sans-serif;
+#loginModal {
+    z-index: 1500; /* Adjust the z-index to a value higher than that of the logo */
+    background-color: #05010f7e; /* Ensure modal background is opaque */
 }
 
-#service-request  h2  {
-    height: 50px;
-    font-family: 'Noto Sans', sans-serif;
-    font-style: italic;
-    text-decoration: underline 4px #eb7506;
-    color:#064bb1fc;
-    margin-bottom: 20px;
+#modalError {
+    display: none; /* Hide the modal error by default */
+    color: #f2f1f1;
+    min-height: 30px;
+    padding: 15px;
+    margin: 4px;
+
 }
 
-#service-request  p {
-    font-family: 'Raleway', sans-serif;
-    font-style: italic;
-    margin: 0 0 25px;
+.modal-header a {
+    text-decoration: none;
+    font-family: "Protest Guerrilla", sans-serif;
+    color: #f2f1f1;
+    font-size: 2rem;
+}
+
+.modal-header a:hover {
+    color: #eb7506;
+}
+
+.modal-content   {
+    width: 80%;
+    margin: 10px auto;
+    background-color: #01060f7e !important;
+    border: 1px solid #01060f;
+    z-index: 1300;
 }
 
 .service-form   {
-    width: 80%;
-    margin: 10px auto;
+    color: #f2f1f1;
 }
 
 .form-outline {
@@ -161,18 +273,22 @@ body    {
 input   {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #eb7506;
+    border-bottom: 1px solid #eb7506;
     width: 100%;
+    color: #f2f1f1;
+    text-align: right;
+    font-family: "Domine", serif;
+    font-weight: 600;
 }
 
 .form-button {
-    background-color: #064bb1fc;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 1.2em;
+    background-color: #eb7506;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-size: 1.5em;
     font-weight: bolder;
-    text-shadow: 2px solid #eb7506;
-    color: #f8f9fa;
+    color: #f2f1f1;
     border: solid 2px #eb7506;
+    border-radius: 15px;
     width: 100%;
     display: inline-block;
     align-items: center;
@@ -182,89 +298,377 @@ input   {
 
 .form-button:hover  {
     color: #eb7506;
-    border: solid 2px #064bb1fc;
+    border: solid 2px #01060f;
     background-color: #f2f1f1;
 }
 
+.close  {
+    background-color: #01060f;
+    border: solid 1px #eb7506;
+    color: #eb7506;
+}
 
-/* Profile */
+.close:hover  {
+    background-color: #eb7506;
+    border: solid 2px #f2f1f1;
+    color: #f2f1f1;
+}
+
+/* Leistungen */
+
+.leistungen  {
+    position: relative;
+    height: 60vh;
+    width: auto;
+    background-color: #01060fa9;
+    border: 1px solid #01060f;
+    border-radius: 15px;
+    color: #f2f1f1;
+    font-family: "Protest Guerrilla", sans-serif;
+    box-sizing: border-box;
+    display: block;
+    z-index: 50;
+    margin-bottom: 25px;
+}
+
+.leistungen p   {
+    font-family: "Domine", serif;
+    font-weight: 700;
+}
+
+.leistungen ul {
+    list-style: none;
+    padding: 20px 25px;
+    font-size: 1rem;
+    font-family: "Domine", serif;
+    font-weight: 700;
+}
+
+.leistungen li {
+    padding: 5px;
+}
+
+.leistungen li:hover {
+    color: #eb7506;
+    font-weight: bold;
+}
+
+#leistungen    {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 0;
+    margin-top: 30px;
+    text-align: left;
+    scroll-behavior: smooth;
+}
+
+/* Termine Section */
+
+#termine    {
+    margin-top:150px;
+}
+
+.termine-tab {
+    margin: none;
+    height: 30px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.termine-tab:hover {
+    margin: none;
+    color: #f2f1f1;
+    background-color: #eb7506;
+    border-radius: 15px 0;
+    min-width: max-content;
+}
+
+.termine-tab.active    {
+    font-size: 1.2rem;
+    text-decoration: 3px underline #eb7506;
+    color:#eb7506;
+}
+
+.termin-list   {
+    text-align: left;
+    list-style-type:none;
+    margin: 1px;
+    max-height: 300px;
+    width: fit-content;
+    padding: 15px 0;
+    z-index: 25;
+    font-family: "Domine", serif;
+    overflow-y: auto;
+}
+
+.termin-list li:hover   {
+    background-color: #eb7506ac;
+    color: #f2f1f1;
+    height: auto;
+    z-index: 20;
+}
+
+#selected-termin    {
+    margin-top: 75px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+#selected-termin p  {
+    margin-top: 0;
+    font-weight: 700;
+    
+}
+
+#selected-termin small  {
+    margin-top: 5px;
+    color: #eb7506;
+}
+
+#applyButton    {
+    text-align: right;
+}
+
 /* Footer   */
 
-.footer {
-    background-color: #f8f9fa;
-    width: 100%;
-    z-index: 2;
+footer  {
     position: fixed;
-    bottom: 0;
-}
-
-.tabs-footer {
-    display: flex;
-    justify-content: space-between; /* Align tabs and logo horizontally */
-    align-items: center;
-    max-height: 25px;
-    padding: 0;
-    /* Create a linear gradient with lines */
-    background-image: linear-gradient(to bottom, 
-        transparent 0%, 
-        transparent 0%, #000 0%, #000 6%, 
-        transparent 6%, 
-        transparent 48%,#000 48%,#000 54%, 
-        transparent 54%,
-        transparent 94%,#000 94%, #000 100%);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-color: #f2f1f1;
+    bottom: -100px;
+    background-color: #01060fa9;
+    border: 1px solid #01060f;
+    height: 75px;
     width: 100%;
-}
-
-.tabs-footer ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Make the list items inline */
-}
-
-.tabs-footer li {
-    border: 1.5px solid #000;
-    border-radius: 0 15px 0 0;
-    display: flex;
+    text-align: left;
+    font-family: "Protest Guerrilla", sans-serif;
+    font-size: 1em;
+    z-index: 120;
+    transition: bottom 0.5s ease; /* add smooth transition */
     align-items: center;
-    justify-content: center;
-    padding: 0 8px;
-    background-color: #f2f1f1;
-    margin: 0; /* Adjust spacing between tabs */
+    padding: 10px 10px;
 }
 
-.tabs-footer li a {
+.footer-logo    {
+    left: 10px;
+}
+
+.line1, .line2 {
     display: block;
-    color: #333;
-    text-align: justify;
+    font-size: 1em;
+}  
+
+.line2 {
+    margin-top: .1em; /* Adjust as needed */
+}
+
+.footer-call    {
+    width: fit-content;
+    text-align: center;
+}
+
+footer a    {
     text-decoration: none;
+    color: #f2f1f1;
+    font-size: 1em;
 }
 
-.tabs-footer li:hover {
-    background-color: #1111114c;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: #f2f1f1;
-    height: 20px;
-    padding: 0 5px;
-    margin: 10px 0;
-}
-
-.footer-logo a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bolder;
+footer a:hover   {
+    color: #eb7506;
+    font-size: 1.2em;
     padding: 0;
 }
 
+footer p    {
+    color: #f2f1f1;
+    padding: 0 5px;
+    margin: 0;
+}
+
+.addresse   {
+    text-align: right;
+}
 
 
 /* Media Queries---------------------------------- */
+
+@media (max-width: 768px) {
+
+    .navbar-brand   {
+        top: 15px;
+        left: 15px;
+    }
+
+    .logo   {
+        padding: 15px;
+    }
+
+    .navbar-loaded #logoImage {
+        top: 15px; /* Position the logo at the top */
+        left: 15px; /* Position the logo at the left */
+        width: 40%; /* Adjust the width of the logo */
+        height: auto; /* Allow the height to adjust proportionally */
+        background-color: none;
+        z-index: 1;
+    }
+
+    .navbar-toggler {
+        top: 20px;
+        right: 15px;
+        z-index: 200;
+    }
+    
+    .navbar-toggler i {
+        font-size: 1.2rem;
+    }
+
+    .navbar-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: fit-content;
+        background-color: #01060f9d;
+        border: 1px solid #01060f;
+        border-radius: 15px;
+        padding-top: 10px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 150;
+        overflow-y: auto;
+    }
+    
+    .navbar-nav li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 25px;
+        left: 15px;
+    }
+        
+    .navbar-nav a {
+        color: #f2f1f1;
+    }
+
+    .navbar-nav a:hover {
+        color: #eb7506;
+    }
+
+    #ort    {
+        padding: none;
+        width: 100%;
+        top: 175px;
+        right: 0;
+        z-index: 20;
+        text-align: right;
+    }
+
+    #ort h1 {
+        font-size: 1.4em;
+        text-align: left;
+    }
+
+    /* Leistungen */
+
+    .leistungen  {
+        height: fit-content;
+        width: auto;;
+        z-index: 50;
+    }
+
+    .leistungen h2 {
+        font-size: 1.8em;
+    }
+
+    .leistungen ul {
+        list-style: none;
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+
+    .hr-mobile {
+        width: 40px;
+        border: none;
+        border-top: 6px solid #f2f1f1 /* Adjust thickness and color as needed */
+    }
+
+
+    #ortlist    {
+        text-align: left;
+        left: 0;
+        margin: auto;
+    }
+
+    .service-request    {
+        height: 350px;
+        background-size: 100%;
+        padding: 0 25px;
+        align-items: center;
+        background-size: cover;
+    }
+
+    .service-request  h2  {
+        font-size: 1.2rem;
+    }
+
+    .request-button {
+        padding: 10px 25px;
+    }
+    
+    .request-button:hover {
+        padding: 10px 25px;
+    }
+
+    .leistung  {
+        height: auto;
+        margin: 10px 0;
+    }
+    
+    .service-request  .icon {
+        font-size: 3em;
+        margin: 10px;
+        color: #eb750690;
+    }
+
+    .service-request  h5 {
+        font-size: .7em;
+        width: auto;
+    }
+    
+    #leistungen {
+        margin-top: 10px;
+        margin-bottom: 75px;
+        z-index: 55;
+    }
+
+    #selected-termin    {
+        margin-top: 10px;
+        margin-bottom: 100px;
+        z-index: 55;
+    }
+    
+    footer  {
+        position:fixed;
+        height: 75px;
+        font-size: 1em;
+    }
+
+    .line1, .line2 {
+        display: inline;
+        font-size: 1em;
+    }  
+    
+    .line2 {
+        margin-top: .1em; /* Adjust as needed */
+    }
+
+    .footer-logo    {
+        left: 0;
+        text-align: left;
+    }
+
+    .addresse   {
+        visibility: hidden;
+    }
+
+}
+  
+  

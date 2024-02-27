@@ -87,7 +87,7 @@ $(document).ready(function() {
                         .show(); // Show the modal error
                     setTimeout(function() {
                         window.location.href = '/'; // Hide the modal after 2 seconds
-                    }, 2500); // 2,5 seconds
+                    }, 4000); // 4 seconds
                 } else if (response.errors) {
                      // Display errors in modal
                 handleError(response.errors);

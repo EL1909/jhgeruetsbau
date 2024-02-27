@@ -114,9 +114,12 @@
   function changeBackground() {
       var images = {{ background_images|safe }}; // Update with your image filenames
       var randomIndex = Math.floor(Math.random() * images.length);
-      var imageUrl = "/media/site/background/" + images[randomIndex]; // Update path to your images
+      var imageUrl = images[randomIndex]; // Update path to your images
+      // Removed from var imageUrl to make it work with Cloudinary= "/media/site/background/" +
       document.body.style.setProperty('--background-image', "url('" + imageUrl + "')"); // Corrected line
   }
+
+  
 
   // Call the function initially
   changeBackground();

@@ -344,6 +344,7 @@ Once you've configured the instance settings, click the "Create" button to provi
     - Deploy Your Application to Heroku:
 
 
+
 2. Database Setup:
 Choose a production-ready database like PostgreSQL, MySQL, or SQLite (not recommended for production).
 Update your Django project settings (settings.py) to use the appropriate database settings for your production database.

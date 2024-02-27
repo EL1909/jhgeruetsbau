@@ -31,10 +31,49 @@ $(document).ready(function() {
         modalInstance.show();
     });
 
+
+    // Function to handle signup or login  errors
+    function handleError(errors)  {
+        // Construct the error message list
+        let errorMessage = '<ul>';
+        Object.keys(errors).forEach(field => {
+            errors[field].forEach(err => {
+                errorMessage += `<li>${err}</li>`;
+            });
+        });
+        errorMessage += '</ul>';
+
+        // Display the error message in the modal
+        $('#modalError').html(errorMessage);
+    };
+
+    // Function to handle AJAX error responses
+    function handleAjaxError(xhr)   {
+        var errorMessage = 'Fehler:';
+        try {
+            var response = JSON.parse(xhr.responseText);
+            if (response.errors) {
+                // Iterate over all errors in the response
+                Object.keys(response.errors).forEach(field => {
+                    response.errors[field].forEach(err => {
+                        errorMessage += ` ${err}`;
+                    });
+                });
+            } else {
+                errorMessage += ' ' + response;
+            }
+        } catch (e) {
+            errorMessage += ' ' + xhr.responseText;
+        }
+        $('#modalError').html(errorMessage)
+                    .css('background-color', '#a7092b7a')
+                    .show();
+        console.error(xhr.responseText);
+    };
+
     // Signup Form error handling
     $('#signupForm').submit(function(event) {
         event.preventDefault(); // Prevent default form submission
-        
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
@@ -48,33 +87,21 @@ $(document).ready(function() {
                         .show(); // Show the modal error
                     setTimeout(function() {
                         window.location.href = '/'; // Hide the modal after 2 seconds
-                    }, 2000); // 2000 milliseconds = 2 seconds
+                    }, 4000); // 4 seconds
                 } else if (response.errors) {
-                    // Display errors in modal
-                    var errors = '<ul>';
-                    $.each(response.errors, function(field, errors) {
-                        $.each(errors, function(index, error) {
-                            errors += '<li>' + error + '</li>';
-                        });
-                    });
-                    errors += '</ul>';
-                    $('#modalError').html(errors);
+                     // Display errors in modal
+                handleError(response.errors);
                 }
             },
             error: function(xhr, status, error) {
-                $('#modalError')
-                    .html('<strong>Error:</strong>' + xhr.responseText)
-                    .css('background-color', '#a7092b7a')
-                    .show();
-                console.error(xhr.responseText);
+                handleAjaxError(xhr);
             }
         });
     });
 
     // Login Form error handling
     $('#loginForm').submit(function(event) {
-        event.preventDefault(); // Prevent default form submission
-        
+        event.preventDefault(); // Prevent default form submission 
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
@@ -83,33 +110,19 @@ $(document).ready(function() {
                 if (response.success) {
                     // Redirect to home page if login successful
                     $('#modalError')
-                        .text('{user} Logged in successfully!')
+                        .text('Logged in successfully!')
                         .css('background-color', '#09a70e7a' )
                         .show(); // Show the modal error
                     setTimeout(function() {
                         window.location.href = '/'; // Hide the modal after 2.5 seconds
                     }, 2500); // 
-                    window.location.href = '/';
                 } else if (response.errors) {
                     // Display errors in modal
-                    var errors = '<ul>';
-                    $.each(response.errors, function(field, errorList) {
-                        $.each(errorList, function(index, error) {
-                            errors += '<li>' + error + '</li>';
-                        });
-                    });
-                    errors += '</ul>';
-                    $('#modalError').html(errors)
-                    .css('background-color', '#a7092b7a')
-                    .show(); // Show the modal error
+                    handleError(response.errors);
                 }
             },
             error: function(xhr, status, error) {
-                $('#modalError')
-                    .html('<strong>Error:</strong>' + xhr.responseText)
-                    .css('background-color', '#a7092b7a')
-                    .show();
-                console.error(xhr.responseText);
+                handleAjaxError(xhr);
             }
         });
     });

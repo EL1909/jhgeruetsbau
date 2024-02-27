@@ -47,18 +47,22 @@ $(document).ready(function() {
     });
 
     // Initially hide closed termins
-    $(".taken-list").hide();
+    $("#taken-list").hide();
 
     // Event listener for clicking on the open tab
     $("#open-tab").click(function() {
-    $(".termin-list").show();
-    $(".taken-list").hide();
+    $("#termin-list").show();
+    $("#taken-list").hide();
+    $(this).addClass("active");
+    $("#closed-tab").removeClass("active");
     });
 
     // Event listener for clicking on the closed tab
     $("#closed-tab").click(function() {
-    $(".taken-list").show();
-    $(".termin-list").hide();
+    $("#taken-list").show();
+    $("#termin-list").hide();
+    $(this).addClass("active");
+    $("#open-tab").removeClass("active");
     });
     
     // Listen for clicks on termin items
@@ -93,9 +97,43 @@ $(document).ready(function() {
 
         // Set the checked attribute of the is_taken switch based on the is_taken value
         $('#is_taken_switch').prop('checked', isTaken);
+    });
 
-        // // Add event listeners to the switches
-        // $("#is_taken_switch").updateStatus(terminId, 'is_taken', isTaken);
+    // Event listener for clicking on taken items
+    $('.taken-item').click(function() {
+        // Get data from clicked taken item
+        var terminId = $(this).data('termin-id');
+        var contactPerson = $(this).data('contact-person');
+        var phone = $(this).data('phone');
+        var email = $(this).data('email');
+        var visitDate = $(this).data('visit-date');
+        var rentTimeframe = $(this).data('rent-timeframe');
+        var address = $(this).data('address');
+        var zipcode = $(this).data('zipcode');
+        var city = $(this).data('city');
+        var notes = $(this).data('notes');
+        var user = $(this).data('user');
+        var isTaken = $(this).data('is_taken');
+
+        // Update content of selected-termin elements
+        $('#contact_person p').text(contactPerson);
+        $('#phone p').text(phone);
+        $('#email p').text(email);
+        $('#visit_date p').text(visitDate);
+        $('#rent_timeframe p').text(rentTimeframe + " Wochen");
+        $('#address p').text(address);
+        $('#zipcode p').text(zipcode);
+        $('#city p').text(city);
+        $('#notes p').text(notes);
+        $('#user p').text(user);
+        $('#terminId p').text(terminId);
+
+        // Set the checked attribute of the is_taken switch based on the is_taken value
+        $('#is_taken_switch').prop('checked', isTaken);
+        
+        // Select the appropriate option in the select element
+        $('#userSelect').val(user); // Assuming username matches option values in the select element
+
     });
 
     // Add event listener for the "Apply" button
@@ -111,8 +149,7 @@ $(document).ready(function() {
 
         // Get CSRF token value
         var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-    
-        
+     
         // Send AJAX request to update the termin
         $.ajax({
             url: "/termine/update_termin/" + terminId + "/",

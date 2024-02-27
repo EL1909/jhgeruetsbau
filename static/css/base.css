@@ -372,17 +372,21 @@ input   {
     margin: none;
     height: 30px;
     text-align: right;
+    cursor: pointer;
 }
 
 .termine-tab:hover {
     margin: none;
+    color: #f2f1f1;
     background-color: #eb7506;
     border-radius: 15px 0;
     min-width: max-content;
 }
 
-.termine-tab .active    {
-    border-bottom: 2px underline #eb7506;
+.termine-tab.active    {
+    font-size: 1.2rem;
+    text-decoration: 3px underline #eb7506;
+    color:#eb7506;
 }
 
 .termin-list   {

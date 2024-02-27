@@ -10,7 +10,7 @@
           <div class="col-4 termine-tab" id="closed-tab">Geschlossen</div>
       </div>
       <div class="col-12">
-        <ul class="termin-list">
+        <ul class="termin-list" id="termin-list" >
           {% for termin in termins %}
           <li data-termin-id="{{ termin.id }}" 
               data-contact-person="{{ termin.contact_person }}" 
@@ -32,25 +32,25 @@
           </li>
         {% endfor %}
         </ul>
-        <ul class="taken-list">
+        <ul class="termin-list" id="taken-list" >
             {% for taken in takens %}
-            <li data-termin-id="{{ termin.id }}" 
-                data-contact-person="{{ termin.contact_person }}" 
-                data-phone="{{ termin.phone }}" 
-                data-email="{{ termin.email }}" 
-                data-visit-date="{{ termin.visit_date }}" 
-                data-rent-timeframe="{{ termin.rent_timeframe }}" 
-                data-address="{{ termin.address }}" 
-                data-zipcode="{{ termin.zipcode }}" 
-                data-city="{{ termin.city }}" 
-                data-notes="{{ termin.notes }}"
-                data-user="{{ termin.user }}"
-                data-is_taken="{{ termin.is_taken }}"
-                data-taken_date="{{ termin.taken_date }}" 
-                class="termin-item">
-              {{ taken.contact_person }} - {{ taken.visit_date|date:"d/m" }}
-              {{ taken.city}}
-              <hr>
+            <li data-termin-id="{{ taken.id }}" 
+            data-contact-person="{{ taken.contact_person }}" 
+            data-phone="{{ taken.phone }}" 
+            data-email="{{ taken.email }}" 
+            data-visit-date="{{ taken.visit_date }}" 
+            data-rent-timeframe="{{ taken.rent_timeframe }}" 
+            data-address="{{ taken.address }}" 
+            data-zipcode="{{ taken.zipcode }}" 
+            data-city="{{ taken.city }}" 
+            data-notes="{{ taken.notes }}"
+            data-user="{{ taken.user }}"
+            data-is_taken="{{ taken.is_taken }}"
+            data-taken_date="{{ taken.taken_date }}" 
+            class="taken-item">
+            {{ taken.contact_person }} - {{ taken.visit_date|date:"d/m" }}
+            {{ taken.city}}
+            <hr>
             </li>
           {% endfor %}
           </ul>
@@ -105,17 +105,20 @@
         <div class="row">
             <div class="col-6">
                 <select id="userSelect">
+                    <option value="" selected>...</option> <!-- Default "Select" option -->
                     {% for user in users %}
-                        {% if termin.user == user.username %}
-                            <option value="{{ user.username }}" selected>{{ user.username }}</option>
-                        {% else %}
-                            <option value="{{ user.username }}">{{ user.username }}</option>
+                        {% if user.username != 'admin' %} <!-- Exclude admin user -->
+                            {% if termin.user == user.username %}
+                                <option value="{{ user.username }}" selected>{{ user.username }}</option>
+                            {% else %}
+                                <option value="{{ user.username }}">{{ user.username }}</option>
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                 </select>
             </div>
             <div class="col-6">
-                <button id="applyButton"">Beigeben</button>
+                <button id="applyButton">Beigeben</button>
             </div>
         </div>  
     </div>

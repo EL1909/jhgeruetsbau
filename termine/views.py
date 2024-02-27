@@ -50,12 +50,8 @@ class createTermin(View):
 class updateTermin(View):
     def post(self, request, id):
         # Get the termin object or return 404
-        print("Received request for termin ID:", id)
         termin = get_object_or_404(Termin, pk=id)
-        # Log received data
-        print("Received data:", request.POST)
-
-
+        
         # Update the termin fields
         is_taken = request.POST.get('is_taken') == 'true'
         if is_taken == True:
@@ -79,7 +75,6 @@ class updateTermin(View):
         termin.save()
 
         # Return a JSON response indicating success
-        print("Received data:", request.POST)
         return JsonResponse({'message': 'Termin updated successfully, message from view'})
     
 

@@ -207,48 +207,66 @@ CONCLUSION:
     Google reCaptcha
     <script src="https://www.google.com/recaptcha/api.js"></script>
 
-- Divide termin into OPEN | COMPLETED - not needed active
 
+## 21.02.24
 
-// Send AJAX request to update the termin
-        $.ajax({
-            url: "/update_termin/" + terminId + "/",
-            type: "POST",
-            dataType: "json",
-            data:: {
-                csrfmiddlewaretoken: '{{ csrf_token }}', // Include CSRF token
-                is_taken: isTaken,
-                user_id: userId
-            },
-            success: function(response) {
-                console.log("Termin updated successfully:", response.message);
-                // Perform any necessary actions after successful update
-            },
-            error: function(xhr, status, error) {
-                console.error("Error updating termin:", error);
-                // Handle errors appropriately
-            }
-        });
+- Divide termin into OFFEN | GESCHLOSSEN - not needed active:  completed
+- Make background to rotate with image gallery within media/site/background: completed
 
+site ready to go LIVE with basic funtionallities such as
+    1. Contact and termin generator
+    2. Termin assignment to selected users and categorization in open - closed
 
-        // Send AJAX request to update the termin
-        $.ajax({
-            url: "/update-termin/" + terminId + "/",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ is_taken: isTaken, user_id: userId }),
-            success: function(response) {
-                console.log("Termin updated successfully");
-                // Perform any necessary actions after successful update
-            },
-            error: function(xhr, status, error) {
-                console.error("Error updating termin:", error);
-                // Handle errors appropriately
-            }
-        });
+Post-going live
+    1. Fix captcha according SSL certificate
+    2. Handle cookies EU policies
+
+V.2 potential imporvements
+    1. Create profiles for each user and show they termins
+    2. add multiple messages and interaction to notes section
+    3. Add "reference" section with images of provided services, :hover with data regarding the image
+    4. Add captcha to account creation
+    5. Create user categories to assign task permission
+    6. Add JavaScript validation library (e.g., jQuery Validate) to provide immediate feedback to users before form submission. to improve error rendering
 
 
 
-
-
+    // Signup Form error handling
+    $('#signupForm').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
         
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.success) {
+                    // Display success message in modal
+                    $('#modalError')
+                        .text('Account created successfully!')
+                        .css('background-color', '#09a70e7a' )
+                        .show(); // Show the modal error
+                    setTimeout(function() {
+                        window.location.href = '/'; // Hide the modal after 2 seconds
+                    }, 2000); // 2000 milliseconds = 2 seconds
+                } else if (response.errors) {
+                    // Display errors in modal
+                    var errors = '<ul>';
+                    $.each(response.errors, function(field, errors) {
+                        $.each(errors, function(index, error) {
+                            errors += '<li>' + error + '</li>';
+                        });
+                    });
+                    errors += '</ul>';
+                    $('#modalError').html(errors);
+                }
+            },
+            error: function(xhr, status, error) {
+                $('#modalError')
+                    .html('<strong>Error:</strong>' + xhr.responseText)
+                    .css('background-color', '#a7092b7a')
+                    .show();
+                console.error(xhr.responseText);
+            }
+        });
+    });

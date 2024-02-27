@@ -29,7 +29,7 @@ class LoginView(LoginView):
             return JsonResponse({'success': True})
         else:
             # Return error response
-            errors = form.errors.as_json()
+            errors = form.errors
             return JsonResponse({'errors':errors}, status=400)
 
 
@@ -48,8 +48,8 @@ class SignupView(SignupView):
             messages.success(request, f'Welcome {user.username}! Your account has been successfully created.')
             return JsonResponse({'success': True})
         else:
-            errors = form.errors.as_json()
-            return JsonResponse({'errors':errors}, status=400)
+            errors = form.errors
+            return JsonResponse({'errors': errors}, status=400)
 
 
 def direct_logout_view(request):

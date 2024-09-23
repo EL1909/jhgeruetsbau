@@ -417,3 +417,10 @@ V.2 potential imporvements
     LG!
 
 
+
+
+# LIVE FROM ESFUERZO VM
+
+    1. Folder created within VM/projects
+    2. Fecth project from github using token (esfuerzo)
+    3. 

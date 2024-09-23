@@ -129,14 +129,11 @@ color: #f2f1f1;
 Need to:
 
  - Verify if the form needs to be passed to the context in signupView
- - add is_approved field to allow who can see termins module
  - review all alerts and messages and set them to be translated
- - Assure Footer shows in termin page
  - Include Notes for termines
  - Allow select Besucher in termin
- - 
  - Hide logo as scroll up o Mobile
- - 
+ 
 
 
 ## 20.02.24
@@ -209,9 +206,6 @@ CONCLUSION:
 
 
 ## 21.02.24
-
-- Divide termin into OFFEN | GESCHLOSSEN - not needed active:  completed
-- Make background to rotate with image gallery within media/site/background: completed
 
 site ready to go LIVE with basic funtionallities such as
     1. Contact and termin generator
@@ -388,3 +382,38 @@ Consider scalability requirements and plan for future growth by designing your a
 12. Documentation:
 Document your deployment process, including any custom configurations or setup steps, to make it easier to maintain and troubleshoot your application in the future.
 By reviewing and addressing these aspects, you'll be better prepared to take your Django project online and ensure its successful deployment in a production environment.
+
+
+
+## First Deliver
+
+The website is ready to use for:
+
+    - Making appoinments
+    - Create users
+    - Review appointments
+    - Assign appointments to a user 
+    - Open and close appointments 
+
+Post-going live
+    1. Fix captcha according SSL certificate
+    2. Handle cookies EU policies
+    3. Include Impressum page
+
+V.2 potential imporvements
+    1. Create profiles for each user and show they termins
+    2. add multiple messages and interaction to notes section
+    3. Add "reference" section with images of provided services, :hover with data regarding the image
+    4. Add captcha to account creation
+    5. Create user categories to assign task permission
+    6. Add JavaScript validation library (e.g., jQuery Validate) to provide immediate feedback to users before form submission. to improve error rendering
+
+    Die Absicht, die so schnell online zu stellen, besteht darin, dass Euch navigieren und darüber nachdenken können, was Sie hinzufügen möchten, 
+    
+    Bevor ich es tatsächlich öffentlich mache, muss ich auch Sicherheitsmaßnahmen zur Website hinzufügen, da diese derzeit nicht vorhanden sind.
+    
+    Wird derzeit auf einem begrenzten Server gehostet, den ich für kleine Projekte verwende. Ich weiß immer noch nicht genau, wie hoch die Wartungskosten für die Aktivierung der Website sind. Ich muss recherchieren, um die richtigen Informationen anzubieten.
+
+    LG!
+
+

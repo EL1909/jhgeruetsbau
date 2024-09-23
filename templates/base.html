@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="geruetsbau, scaffolding">
-    <meta name="keywords" content="geruetsbau, scaffolding">
+    <meta name="description" content="geruestbau firma sud-bayern alpenvorland">
+    <meta name="keywords" content="geruestbau, scaffolding">
     <meta name="EL1909" content="el1909@gmail.com">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
@@ -60,6 +60,9 @@
                             <a id="leistungen-tab" class="nav-link">Leistungen</a>
                         </li>
                         <li class="nav-item">
+                          <a id="impressum-tab" class="nav-link">Impressum</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" id="loginModalLink" href="#">Anmelden</a>
                         </li>
                     {% endif %}
@@ -104,32 +107,27 @@
     {% include 'home/modal.html' %}
     {% include 'accounts/loginmodal.html' %}
     <!-- custom.js -->
-    {% if user.is_authenticated %}
-    <script src="{% static 'js/custom.js' %}"></script>
-    {% else %}
+    <script src="{% static 'js/bg.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
     <script src="{% static 'js/modal.js' %}"></script>
-    {% endif %}
     <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/5c47144494.js" crossorigin="anonymous"></script>
 </body>
 </html>
 <script>
   // Change background image to bode::after based on background_image context processor
-
   function changeBackground() {
-      var images = {{ background_images|safe }}; // Update with your image filenames
-      var randomIndex = Math.floor(Math.random() * images.length);
-      var imageUrl = images[randomIndex]; // Update path to your images
-      // Removed from var imageUrl to make it work with Cloudinary= "/media/site/background/" +
-      document.body.style.setProperty('--background-image', "url('" + imageUrl + "')"); // Corrected line
-  }
+        var images = {{ background_images|safe }}; // Update with your image filenames
+        var randomIndex = Math.floor(Math.random() * images.length);
+        var imageUrl = images[randomIndex]; // Update path to your images
+        // Removed from var imageUrl to make it work with Cloudinary= "/media/site/background/" +
+        document.body.style.setProperty('--background-image', "url('" + imageUrl + "')"); // Corrected line
+    };
 
-  
 
-  // Call the function initially
-  changeBackground();
+    // Call the function initially
+    changeBackground();
 
-  // Call the function every 5 seconds (5000 milliseconds)
-  setInterval(changeBackground, 5000);
+    // Call the function every 5 seconds (5000 milliseconds)
+    setInterval(changeBackground, 5000);
 </script>

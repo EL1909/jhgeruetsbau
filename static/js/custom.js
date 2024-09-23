@@ -5,31 +5,85 @@ $(document).ready(function() {
     }, 600);
 
     // Hide the h1 initially
-    $("#ort, #termine").hide();
+    $("#ort, #termine, #impressum").hide();
 
     // Fade in the h1 "Gerústbau im Alpenvorland"
     $("#ort, #termine").fadeIn(1500);
 
+    // Handling leistungen list's behavior
+    function leistungenDisplay()  {
+        var leistungenDiv = $("#leistungen");
+        var leistungen = ["Fassadengerüste", "Schutzgerüste", "Raumgerüste", "Fahrgerüste", "Trag - & Stützgerüste", "Passantentunnel", "Treppentürme", "Personenaufzüge", "Sonderkonstruktionen für Kirchtürme", "Fluchttreppen", "Kraftwerke"];
+        var ul = $("<ul>");
+        leistungen.forEach(function(leistung, index) {
+            var li = $("<li>");
+            var icon = $("<span>").addClass("fas fa-wrench");
+            li.append(icon).append("  " + leistung);
+            ul.append(li);
+            li.hide().delay(500 * index).fadeIn(800);
+        });
+        leistungenDiv.append(ul).fadeIn(3000);
+    };
+
     // Leistungen show as tab is clicked behavior
     $('#leistungen-tab').click(function() {
+        $('#leistungen').show();
+        $('#impressum').hide();
+        // Scroll the page to the top position of the second-content div
+        $('html, body').animate({
+            scrollTop: $('#second-content').offset().top
+        }, 500); // Adjust the duration of the animation as needed (in milliseconds)
+        leistungenDisplay()
+        
+    });
+
+    // 10. Running Text behavior
+    $('.running-text').each(function() {
+        var container = $(this);
+        var text = container.text();  // Get the text from the container
+        applyRunningTextEffect(container, text);
+        
+    });
+    
+    function applyRunningTextEffect(container) {
+        var runningText = container;
+
+        // Hide all <p> elements inside the container
+        let $paragraphs = runningText.find('p');
+        $paragraphs.hide();
+
+        let currentIndex = 0;
+
+        // Show paragraphs one by one
+        let intervalId = setInterval(function() {
+            if (currentIndex < $paragraphs.length) {
+                $paragraphs.eq(currentIndex).fadeIn(800);  // Show each paragraph progressively
+                currentIndex++;
+
+                // Automatically scroll to the bottom of the container as new paragraphs appear
+                runningText.animate({
+                    scrollTop: runningText[0].scrollHeight
+                }, 1000);
+            } else {
+                clearInterval(intervalId);  // Stop the interval when done
+
+                // Use setTimeout to trigger leistungenDisplay() after the running text is completed
+                setTimeout(function() {
+                    leistungenDisplay();
+                }, 500);  // Optional delay (0.5 seconds)
+            }
+        }, 1500);  // Delay between each paragraph
+    }
+
+    // Impressum show as tab is clicked behavior
+    $('#impressum-tab').click(function() {
+        $('#leistungen').hide();
+        $('#impressum').show();
         // Scroll the page to the top position of the second-content div
         $('html, body').animate({
             scrollTop: $('#second-content').offset().top
         }, 500); // Adjust the duration of the animation as needed (in milliseconds)
     });
-
-    // Handling leistungen list's behavior
-    var leistungenDiv = $("#leistungen");
-    var leistungen = ["Fassadengerüste", "Schutzgerüste", "Raumgerüste", "Fahrgerüste", "Trag - & Stützgerüste", "Passantentunnel", "Treppentürme", "Personenaufzüge", "Sonderkonstruktionen für Kirchtürme", "Fluchttreppen", "Kraftwerke"];
-    var ul = $("<ul>");
-    leistungen.forEach(function(leistung, index) {
-        var li = $("<li>");
-        var icon = $("<span>").addClass("fas fa-wrench");
-        li.append(icon).append("  " + leistung);
-        ul.append(li);
-        li.hide().delay(500 * index).fadeIn(800);
-    });
-    leistungenDiv.append(ul).fadeIn(3000);
 
     // Auto-Hide Expanded Menu
     const navbarContainer = $('.navbar-collapse');

@@ -326,7 +326,7 @@ input   {
     color: #f2f1f1;
     font-family: "Protest Guerrilla", sans-serif;
     box-sizing: border-box;
-    display: block;
+    display: flex;
     z-index: 50;
     margin-bottom: 25px;
 }
@@ -334,6 +334,7 @@ input   {
 .leistungen p   {
     font-family: "Domine", serif;
     font-weight: 700;
+    padding: 2px;
 }
 
 .leistungen ul {
@@ -360,6 +361,21 @@ input   {
     margin-top: 30px;
     text-align: left;
     scroll-behavior: smooth;
+}
+
+#impressum  {
+    margin-top: 5%;
+    height: fit-content;
+    border-left: solid 2px #f2f1f1;
+}
+
+#impressum h4 {
+    padding: 4px;
+}
+
+#impressum p {
+    padding: 0 2px;
+    margin: auto;
 }
 
 /* Termine Section */

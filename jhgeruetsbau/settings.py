@@ -30,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['jhgerustbau-c1cfbee987f9.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['jhgerustbau-c1cfbee987f9.herokuapp.com','localhost', '127.0.0.1']
 
 
 # Application definition
@@ -86,7 +86,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 WSGI_APPLICATION = 'jhgeruetsbau.wsgi.application'
 

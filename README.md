@@ -423,4 +423,29 @@ V.2 potential imporvements
 
     1. Folder created within VM/projects
     2. Fecth project from github using token (esfuerzo)
-    3. 
+    3. Create Gunicorn configuration for each project
+        3.1 - Activate individual virtual enviroments for each project
+               
+                $ source /home/efrain19091/projects/esfuerzo/venv/bin/activate
+
+        3.2 - Install gunicorn
+
+                $ pip install gunicorn
+
+        3.3 - Start screen to run the site using gunicorn
+
+                $ screen -S [name of project] (start a new session)
+
+                $ control key + A + D (detacht)
+
+                $ screen -R [name of project] (close running session)
+
+        3.4 - Bind project's wsgi file to a port
+                
+                $ gunicorn --bind 127.0.0.1:8081 jhgeruetsbau.wsgi:application
+
+    4. Install and configure Nginx to VM in order to manage multiple hosting
+        4.1 - 
+
+
+

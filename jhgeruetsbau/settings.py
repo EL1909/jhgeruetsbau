@@ -169,10 +169,10 @@ cloudinary.config(
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/igt')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Redirect to home URL after login (use the URL where you want users to be redirected after login)

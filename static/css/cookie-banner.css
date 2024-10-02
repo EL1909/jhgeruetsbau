@@ -1,0 +1,66 @@
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    background-color: hsla(0, 0%, 20%, 0.594);
+    border: 2px solid #f2f1f1;
+    border-radius: 25px;
+    color: white;
+    padding: 5px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to start (left) */
+}
+
+.cookie-preferences {
+    padding: 5px;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Set width to 100% for proper alignment */
+}
+
+.cookie-switch {
+    display: flex;  /* Use flex to align checkbox and label */
+    justify-content: space-between;  /* Align items with space between */
+    align-items:end; /* Center align checkbox and label */
+    margin: 5px 0;
+}
+
+.cookie-switch input {
+    margin-left: auto; /* Push the checkbox to the right */
+}
+
+.cookie-switch label {
+    font-weight: bold;
+}
+
+.cookie-switch label:hover {
+    color: orange;
+    font-weight: bold;
+}
+
+.cookie-switch a {
+    color: #ddd;
+    margin: 0 5px;
+    font-size: 0.9em;
+    text-decoration: underline;
+}
+
+button#accept-cookies {
+    background-color: #0056b3;
+    color: #f2f1f1;
+    font-weight: bold;
+    border: 2px solid orange;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 50%; /* Center button by setting width */
+    align-self: center; /* Center the button within the banner */
+    margin-top: 10px; /* Add space above the button */
+}
+
+button#accept-cookies:hover {
+    color: #0056b3;
+    background-color: #f2f1f1;
+}

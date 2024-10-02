@@ -1,13 +1,14 @@
 $(document).ready(function() {
-    // Change background image to bode::after based on background_image context processor
+    // Change background image to body::after based on background_image context processor
     function changeBackground() {
-        var images = {{ background_images|safe }}; // Update with your image filenames
-        var randomIndex = Math.floor(Math.random() * images.length);
-        var imageUrl = images[randomIndex]; // Update path to your images
-        // Removed from var imageUrl to make it work with Cloudinary= "/media/site/background/" +
-        document.body.style.setProperty('--background-image', "url('" + imageUrl + "')"); // Corrected line
+        if (Array.isArray(images)) {
+            var randomIndex = Math.floor(Math.random() * images.length);
+            var imageUrl = images[randomIndex]; // Update path to your images
+            document.body.style.setProperty('--background-image', "url('" + imageUrl + "')");
+        } else {
+            console.error("background_images is not an array");
+        }
     };
-
 
     // Call the function initially
     changeBackground();

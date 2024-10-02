@@ -1,0 +1,35 @@
+{% load static %}
+<div class="esfooter lines">
+    <div class="tabs-esfooter">
+        <nav>
+            <ul>
+                <li id="tab-servicios"><a href="http://35.184.6.115/" target="_blank">Software Entwicklung</a></li>
+                <li class="contactMessage"><a href="http://35.184.6.115/" target="_blank">Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="esfooter-logo">
+            <a href="http://35.184.6.115/" target="_blank"">Esfuerzo.</a>
+        </div>
+    </div>
+</div>
+<div class="bottom-line"></div>
+<link rel="stylesheet" href="{% static 'css/esfooter.css' %}" type="text/css">
+<script>
+$(document).ready(function() {
+    $('#esfooter').hide()
+
+    // 2. Listen for the end of the .lines animation
+    $('.lines').on('animationend', function() {
+        // Make nav ul visible
+        $('nav').css('visibility', 'visible');
+    });
+
+    $('#footer').click(function() {
+        $('.lines').css('visibility', 'visible');
+        $('.bottom-line').css('visibility', 'visible');
+        $('#esfooter').slideToggle(); // Toggle visibility of the second footer
+    });
+
+
+});
+</script>

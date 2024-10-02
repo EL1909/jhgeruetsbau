@@ -27,6 +27,7 @@ $(document).ready(function() {
 
     // Leistungen show as tab is clicked behavior
     $('#leistungen-tab').click(function() {
+        $('#leistungen').empty();
         $('#leistungen').show();
         $('#impressum').hide();
         // Scroll the page to the top position of the second-content div
@@ -225,7 +226,14 @@ $(document).ready(function() {
         });
     });
     
+    // Scroll to the top when the menu icon is clicked
+    $('.navbar-toggler').click(function() {
+        // Scroll to the top of the page smoothly
+        $('html, body').animate({ scrollTop: 0 }, 500); // Adjust duration as needed
+    });
+
 });
+
 
 // Footer Behavior
 let footer = $('footer');

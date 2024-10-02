@@ -5,7 +5,7 @@
 /* General*/
 
 html    {
-    min-height: 100vh;   
+    min-height: 100vh;
 }
 
 body {
@@ -25,7 +25,8 @@ body::before {
     z-index: 1;
     background-size: cover;
     background-position: center;
-    transition: background-image 0.5s ease-in-out;
+    background-color: #7a7b7e9c;
+    transition: background-image 0.5s ease;
     background-image: var(--background-image);
     z-index: 0;
 }
@@ -364,6 +365,7 @@ input   {
 }
 
 #impressum  {
+    display: none; /* Hide by default */
     margin-top: 5%;
     height: fit-content;
     border-left: solid 2px #f2f1f1;
@@ -452,15 +454,16 @@ footer  {
     bottom: -100px;
     background-color: #01060fa9;
     border: 1px solid #01060f;
-    height: 75px;
+    max-height: 100px;
     width: 100%;
     text-align: left;
     font-family: "Protest Guerrilla", sans-serif;
     font-size: 1em;
     z-index: 120;
-    transition: bottom 0.5s ease; /* add smooth transition */
+    transition: max-height 0.5s ease; /* add smooth transition */
     align-items: center;
     padding: 10px 10px;
+    overflow: hidden;
 }
 
 .footer-logo    {

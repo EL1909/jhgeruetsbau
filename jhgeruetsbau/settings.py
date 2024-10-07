@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['geruestbau-hundegger.de','www.geruestbau-hundegger.de','localhost','35.184.6.115']
+ALLOWED_HOSTS = ['geruestbau-hundegger.de','www.geruestbau-hundegger.de','localhost','35.184.6.115', '127.0.0.1']
 
 
 # Application definition
@@ -167,7 +167,7 @@ cloudinary.config(
 )
 
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

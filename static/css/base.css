@@ -204,6 +204,12 @@ body.scroll-bottom .footer {
     z-index: 100;
 }
 
+#ort:hover    {
+    color: #01060fa9;
+    background-color: #f2f1f1;
+    border: 1px solid #01060f;
+}
+
 #ort h1 {
     text-align: right;
     width: 100%;

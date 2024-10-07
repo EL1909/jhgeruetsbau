@@ -1,144 +1,205 @@
-# jhgeruetsbau
+# Geruetsbau Hundegger - v1
+
 Josef Hundegger Gerutsbau Website
 
+Django project, Google Cloud based
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Working Methodology](#working-methodology)
+- [User Stories](#user-stories)
+- [Moscow Prioritization](#moscow-prioritization)
+- [Database Design](#database-design)
+    - [Models](#models)
+    - [Database Relationships](#database-relationships)
+- [Users Types](#users-types)
+- [CRUD Operations](#crud-operations)
+- [Features](#features)
+    - [Design and Colors](#design-and-colors)
+    - [Navigation](#navigation)
+- [Project Creation Process](#project-creation-process)
+- [Testing](#manual-testing)
+- [Deployment to Heroku](#deploy-to-heroku)
+- [Bugs](#bugs)
+    - [Unfixed](#unfixed)
+    - [Fixed](#fixed)
+- [Features to Improve](#features-to-improve)
+- [Credits](#credits)
 
 
-SERVICE REQUESTS
 
-To implement a feature where all messages received by the modal can be seen by a registered user, you would need to set up a system to store and retrieve these messages. Below is a high-level guide on how you might achieve this:
+# Introduction:
 
-Backend (Server-side):
-Set up a backend server (if you don't have one already). You can use a web framework such as Django, Flask, Express.js, etc., depending on your preferred programming language. -DONE-
+    Hundegger Geruestbau, is a company that provides scaffolding assembly services, it's been active since 1984 attending customers from sud-bayern area.
 
-Create a database table or collection to store messages. Each message should have attributes like sender, receiver (user who received the message), content, timestamp, etc.
+    In order to reach more customers, we have developed this portal to make easier the reservation process and give a straight call option to visitors.
 
-    Create a New Django App:
-    Open a terminal and navigate to your Django project directory. Then run the following command to create a new app: python manage.py startapp messages -DONE- 
+# Working Methodology:
 
-Define the Message Model:
-Open the models.py file inside your newly created messages app and define the message model. For example:
-python
-Copy code
-# messages/models.py
+    In order to achieve this project, i've set user stories and tasks to be completed within milestones, leading to get an MVP.
 
-class Appointment(models.Model):
-    contact_person = models.CharField(max_length=255)
-    phone = models.CharField(max_length=20)
-    email = models.EmailField()
-    visit_date = models.DateField()
-    rent_timeframe_weeks = models.PositiveIntegerField()
-    address = models.CharField(max_length=255)
-    zipcode = models.CharField(max_length=10)
-    city = models.CharField(max_length=100)
-    notes = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # Assuming you have user authentication
+    Placing myself in the user's position, and anticipating the user's wants and needs, i made myself the following questions:
 
-    def __str__(self):
-        return f"Appointment for {self.contact_person} on {self.visit_date}"
+    - Why would a user want to visit our website?
+    - What will make them return?
+    - What do i want to see when I visit the website?
+    - What would make me return?
+
+    From those answer I did set up 9 issues in GitHub as User Stories.
+
+
+# User Stories:
+
+    I can reach the company to make an appointment.
+        - As User, i can easily reach the company by calling or sending an email
+        - As User, i can request an appointment from a calendar with available options
+        - As an Employee, I can see The open appointments and it's details
+        - As an Admin, I can assing a date to an employee
+
+    I can see a list of services provided by the company.
+        - As User, i can review a list of services provided by the company
+        - As User, i can review the Company's legal information in the IMPRESSUM
+
+    I can access accountability company's info
+        - As an employee, i can review my work hours periodically
+        - As an employee, i can review appointments assigned to me
+        - As an admin, i can set calendar's availability
         
--DONE-
+
+# Moscow Prioritazion
+
+Task were organized by priority, using tags for Must, Should, Could and Would.
 
 
-Don't forget to run python manage.py makemigrations and python manage.py migrate to apply the changes to your database.
+# Database Design
 
-Create API Endpoints:
-Create views for handling message-related operations (sending and retrieving messages) and define corresponding API endpoints.
+## Models
+    - CustomUser
+    - Termin
+    - Message
 
-# messages/views.py
+## Database Relationships
 
-from django.views import View
-from django.shortcuts import render
-from .models import Message
+# Users Types
+    - Visitors
+    - Employees
+    - Adminusers
 
-class TerminList(View):
-    template_name = 'messages/termin.html'
+    efrain19091@gmailcom
+    admin
+    12345
 
-    def get(self, request, *args, **kwargs):
-        termin = Message.objects.all()
-        return render(request, self.template_name, {'messages': messages})
+    hundegger.geruestbau@t-online.de
+    jhundegger
+    Josep0102
 
+    luciano@jh.de
+    Luciano
+    Gerustbau1909
 
-# messages/urls.py
-Include these URLs in your project's main urls.py file:
-python
-Copy code
-# project/urls.py
--DONE-
+# CRUD Operations
 
-Configure Permissions:
-Update your project's settings.py to include necessary permissions for your app.
-python
-Copy code
+# Features
 
-# project/settings.py
+## Service Request:
+    To implement a feature where all messages received by the modal can be seen by a registered user, i set up a system to store and retrieve these messages. 
+    
+    Create a database table or collection to store messages. Each message have attributes like sender, receiver (user who received the message), content, timestamp, etc.
 
-INSTALLED_APPS = [
-    # ...
-    'messages',
-]
--DONE-
+    Define the Message Model:
+    Open the models.py file inside your newly created messages app and define the message model. For example:
 
-
-Ensure that you send the user's access token (obtained during authentication) in the Authorization header for authenticated requests.
-Authentication:
-
-Install Djando Allauth for user administration
-
-Make sure your users are authenticated before allowing them to send or retrieve messages. Use a token-based authentication system, such as JWT (JSON Web Tokens).
-Security:
-Implement proper security measures, such as input validation, authentication checks, and secure communication (use HTTPS).
-This is a simplified guide, and the actual implementation may vary based on your specific tech stack and requirements. Ensure that your application complies with best practices and security standards.
+    Create API Endpoints:
+    reate views for handling message-related operations (sending and retrieving messages) and define corresponding API endpoints.
 
 
-HUNDEGGER
 
 
-## 07.02.24
+# Design and Colors
+
+## Fonts
+    - font-family: "Protest Guerrilla", sans-serif;
+    - font-family: "Domine", serif;
+## Colors
+    - Background-color: #7a7b7e9c;
+    - Text Color: #f2f1f1;
+    - Details: #eb7506;
+
+# Navigation
+
+# Project Creation Process
+
+# Testing
+
+# Deployment
 
 Desired domain:
 WWW.GERUESTBAU-HUNDEGGER.DE
 
-users
+## LIVE FROM ESFUERZO VM
 
-efrain19091@gmailcom
-admin
-12345
+    1. Folder created within VM/projects
+    2. Fecth project from github using token (esfuerzo)
+    3. Create Gunicorn configuration for each project
+        3.1 - Activate individual virtual enviroments for each project
+               
+                $ source /home/efrain19091/projects/esfuerzo/venv/bin/activate
 
-hundegger.geruestbau@t-online.de
-jhundegger
-Josep0102
+        3.2 - Install gunicorn
 
-luciano@jh.de
-Luciano
-Gerustbau1909
+                $ pip install gunicorn
+
+        3.3 - Start screen to run the site using gunicorn
+
+                $ screen -S [name of project] (start a new session)
+
+                $ control key + A + D (detacht)
+
+                $ screen -R [name of project] (close running session)
+
+        3.4 - Bind project's wsgi file to a port
+                
+                $ gunicorn --bind 127.0.0.1:8081 jhgeruetsbau.wsgi:application
+
+    4. Remove parked DNS
+        4.1 - Ensure DNS leads to VM IP, and remove parked domain setting
+    
+
+    5. Install and configure Nginx to VM in order to manage multiple hosting
+        5.1 - Include domain in nginx file within sites available
+
+                $ sudo nano /etc/nginx/sites-available/hundegger
+        
+        5.2 - Create file with location for gunicorn process, static, media and .well-known paths
+
+    6. Install SSL Certificate
+        6.1 - Install certbot
+            
+            $ sudo install certbot
+        
+        6.2 - Create LetsEncrypt folder path
+
+            $ sudo mkdir /var/www/letsencrypt/.well-known/acme-challenge/
+        
+        6.3 - Create SLL certificate using Certbot
+
+            $ sudo certbot --nginx -d geruestbau-hundegger.de -d www.geruestbau-hundegger.de
 
 
-- FONTS -
+# Bugs
+    - [Unfixed](#unfixed)
+    - [Fixed](#fixed)
 
-    font-family: "Protest Guerrilla", sans-serif;
-    font-family: "Domine", serif;
+# [Features to Improve](#features-to-improve)
+## 1. Create profiles for each user and show they termins
+## 2. add multiple messages and interaction to notes section
+## 3. Add "reference" section with images of provided services, :hover with data regarding the image
+## 4. Add captcha to account creation
+## 5. Create user categories to assign task permission
+## 6. Add JavaScript validation library (e.g., jQuery Validate) to provide immediate feedback to users before form submission. to improve error rendering
 
-- COLORS -
-background-color: #01060f7e;
-color: #f2f1f1;
-
-
-## 15.02.24
-"Account functionallties and alerts working as expected from modal"
-
-Need to:
-
- - Verify if the form needs to be passed to the context in signupView
- - review all alerts and messages and set them to be translated
- - Include Notes for termines
- - Allow select Besucher in termin
- - Hide logo as scroll up o Mobile
- 
-
-
-## 20.02.24
-
- - Add captcha to request service
+## 7.Add captcha to request service
    
 1. Choose a CAPTCHA service: There are several CAPTCHA services available such as Google reCAPTCHA, hCaptcha, and others. Choose one and obtain the necessary credentials (site key and secret key).
 
@@ -204,6 +265,12 @@ CONCLUSION:
     Google reCaptcha
     <script src="https://www.google.com/recaptcha/api.js"></script>
 
+# [Credits](#credits)
+
+
+ 
+
+
 
 ## 21.02.24
 
@@ -217,12 +284,7 @@ Post-going live
     3. Include Impressum page
 
 V.2 potential imporvements
-    1. Create profiles for each user and show they termins
-    2. add multiple messages and interaction to notes section
-    3. Add "reference" section with images of provided services, :hover with data regarding the image
-    4. Add captcha to account creation
-    5. Create user categories to assign task permission
-    6. Add JavaScript validation library (e.g., jQuery Validate) to provide immediate feedback to users before form submission. to improve error rendering
+    
 
 
 
@@ -419,33 +481,7 @@ V.2 potential imporvements
 
 
 
-# LIVE FROM ESFUERZO VM
 
-    1. Folder created within VM/projects
-    2. Fecth project from github using token (esfuerzo)
-    3. Create Gunicorn configuration for each project
-        3.1 - Activate individual virtual enviroments for each project
-               
-                $ source /home/efrain19091/projects/esfuerzo/venv/bin/activate
-
-        3.2 - Install gunicorn
-
-                $ pip install gunicorn
-
-        3.3 - Start screen to run the site using gunicorn
-
-                $ screen -S [name of project] (start a new session)
-
-                $ control key + A + D (detacht)
-
-                $ screen -R [name of project] (close running session)
-
-        3.4 - Bind project's wsgi file to a port
-                
-                $ gunicorn --bind 127.0.0.1:8081 jhgeruetsbau.wsgi:application
-
-    4. Install and configure Nginx to VM in order to manage multiple hosting
-        4.1 - 
 
 
 

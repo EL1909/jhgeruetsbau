@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['geruestbau-hundegger.de','www.geruestbau-hundegger.de','localhost', '127.0.0.1', '35.184.6.115']
+ALLOWED_HOSTS = ['geruestbau-hundegger.de','www.geruestbau-hundegger.de','localhost','35.184.6.115']
 
 
 # Application definition
